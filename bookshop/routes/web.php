@@ -25,4 +25,4 @@ Route::prefix('admin')->group(function () {
     Route::get('books', function () {
         
     });
-});
+}); 
