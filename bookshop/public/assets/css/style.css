@@ -180,6 +180,9 @@ body.padTop44 {
 .mini-sidebar #left #right {
   display: none !important;
 }
+.marginrl{
+margin-left: 70px !important;
+margin-right: 70px !important;}
 .mini-sidebar #content {
   margin-left: 100px;
   -webkit-transition: margin-left 0.2s;

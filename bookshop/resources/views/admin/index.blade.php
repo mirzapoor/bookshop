@@ -1,7 +1,8 @@
 @extends('layouts.adminlayouts')
 @section('content')
 <div id="content">
-             
+
+   <div class="row"> 
     <div class="inner" style="min-height: 700px;">
         <div class="row">
             <div class="col-lg-12">
@@ -10,7 +11,7 @@
         </div>
           <hr />
          <!--BLOCK SECTION -->
-         <div class="row">
+         <div class="row"> 
             <div class="col-lg-12">
                 <div style="text-align: center;">
                    
@@ -577,13 +578,14 @@
                         </div>
                     </div>
                 </div>
-            </div>
-
-        </div>
+        
+    </div>
+</div>
          <!--TABLE, PANEL, ACCORDION AND MODAL  -->
 
         
     </div>
+</div>
 
 </div>
 @endsection
