@@ -348,16 +348,13 @@
                         <li class="panel">
                             <a href="#" data-parent="#menu" data-toggle="collapse" class="accordion-toggle"
                                 data-target="#pagesr-nav">
-                                <i class="icon-table"></i> مدیریت نویسدگان
-                                <span class="pull-left">
-                                    <i class="icon-angle-right"></i>
-                                </span>
-                                &nbsp; <span class="label label-info">6</span>&nbsp;
+                                <i class="icon-table"></i> مدیریت نویسندگان
+                               
                             </a>
                             <ul class="collapse" id="pagesr-nav">
-                                <li><a href="pages_calendar.html"><i class="icon-angle-left"></i> ایجاد نویسنده جدید </a>
+                                <li><a href="<?= Url('admin\writer\create')?>"><i class="icon-angle-left"></i> ایجاد نویسنده جدید </a>
                                 </li>
-                                <li><a href="pages_timeline.html"><i class="icon-angle-left"></i>نمایش و مدیریت  نویسندگان
+                                <li><a href="<?= Url('admin\writer')?>"><i class="icon-angle-left"></i>نمایش و مدیریت  نویسندگان
                                     </a>
                                 </li>
                             </ul>

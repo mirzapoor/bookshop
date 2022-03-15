@@ -21,7 +21,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::prefix('admin')->group(function () {
     Route::resource('/pakhsh', 'PakhshController');
-    Route::resource('/writers','WriterController');
+    Route::resource('/writer','WriterController');
 //     Route::get('index', function () {
 //         return view('admin.index');
 //     });
