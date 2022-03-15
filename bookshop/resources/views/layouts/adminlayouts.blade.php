@@ -334,6 +334,9 @@
                             <a href="#" data-parent="#menu" data-toggle="collapse" class="accordion-toggle collapsed"
                                 data-target="#form-nav">
                                 <i class="icon-pencil"></i> مراکز پخش
+                                <span class="pull-left">
+                                    <i class="icon-angle-right"></i>
+                                </span>
                             </a>
                             <ul class="collapse" id="form-nav">
                                 <li class=""><a href="<?= url('admin/pakhsh/create') ?>"><i
@@ -349,7 +352,9 @@
                             <a href="#" data-parent="#menu" data-toggle="collapse" class="accordion-toggle"
                                 data-target="#pagesr-nav">
                                 <i class="icon-table"></i> مدیریت نویسندگان
-                               
+                                <span class="pull-left">
+                                    <i class="icon-angle-right"></i>
+                                </span>
                             </a>
                             <ul class="collapse" id="pagesr-nav">
                                 <li><a href="<?= Url('admin\writer\create')?>"><i class="icon-angle-left"></i> ایجاد نویسنده جدید </a>
@@ -366,11 +371,10 @@
                                 <span class="pull-left">
                                     <i class="icon-angle-right"></i>
                                 </span>
-                                &nbsp; <span class="label label-danger">4</span>&nbsp;
                             </a>
                             <ul class="collapse" id="chart-nav">
-                                <li><a href="charts_line.html"><i class="icon-angle-left"></i> ثبت مترجم جدید </a></li>
-                                <li><a href="charts_bar.html"><i class="icon-angle-left"></i> نمایش و مدیریت
+                                <li><a href="<?= Url('admin\translator\create')?>"><i class="icon-angle-left"></i> ثبت مترجم جدید </a></li>
+                                <li><a href="<?= Url('admin\translator')?>"><i class="icon-angle-left"></i> نمایش و مدیریت
                                         مترجمین</a></li>
                             </ul>
                         </li>

@@ -99,7 +99,6 @@
                     <div class="form-group input-group col-lg-7">
                         <span class="input-group-addon ">@</span>
                         {!! Form::text('email_pakhsh', null, ['class' => 'form-control', 'placeholder' => ' ایمیل مرکز پخش را وارد کنید.']) !!}
-                        {{-- </div> --}}
                     </div>
                     {{ Form::label('website_pakhsh', 'نشانی وب', ['class' => 'control-label cal-lg-3 marginrl']) }}
                     <div class="form-group input-group col-lg-7 marginrl">
