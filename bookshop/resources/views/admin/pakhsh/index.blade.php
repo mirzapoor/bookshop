@@ -8,7 +8,7 @@
                 </div>
             </div>
             <hr>
-            <div class="row " style="margin-top: 30px">
+            <div class="row" style="margin-top: 30px">
                 @foreach ($pakhsh as $pakhsh1)
                     <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                         <div class="panel panel-primary">
@@ -28,7 +28,7 @@
                                     data-toggle="modal" data-target="#{{ $pakhsh1->id }}">
                                     <i class="icon-list"></i></button>
 
-                                <a href="<?= url('admin/pakhsh/' . $pakhsh1->id . '/edit') ?>" title="ویرایش"
+                                <a href="<?= url('admin/pakhsh/'.$pakhsh1->id.'/edit') ?>" title="ویرایش"
                                     class="btn btn-success btn-circle btn-lg"> <i class="icon-link"></i></a>
 
                                 <button type="button" title="حذف" class="btn btn-danger btn-circle btn-lg"
@@ -54,7 +54,7 @@
                                         <div class="modal-boby" style="margin-right: 10px">
                                             <p>
                                                 تلفن : {{ $pakhsh2->phone_pakhsh }} </p>
-                                            <p> آدرس : {{ $pakhsh2->website_pakhsh }} </p>
+                                            <p> آدرس : {{ $pakhsh2->address_pakhsh }} </p>
                                             <p> فکس : {{ $pakhsh2->fax_pakhsh }} </p>
                                             <p> ایمیل : {{ $pakhsh2->email_pakhsh }} </p>
                                             <p> نشانی وب سایت : <a href="http://www.{{ $pakhsh2->website_pakhsh }}"
@@ -85,7 +85,7 @@
                                                 <P> {{ $pakhsh3->details_pakhsh }}</P>
                                             </div>
                                             <div class="modal-footer">
-                                                <form method="POST" action="<?= Url('admin/pakhsh/' . $pakhsh3->id) ?>">
+                                                <form method="POST" action="<?= Url('admin/pakhsh/'. $pakhsh3->id) ?>">
                                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                                     <input type="hidden" name="_method" value="DELETE">
                                                     <input type="submit" name="btndelete" value="حذف کردن"

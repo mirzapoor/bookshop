@@ -23,6 +23,8 @@ Route::prefix('admin')->group(function () {
     Route::resource('/pakhsh', 'PakhshController');
     Route::resource('/writer','WriterController');
     Route::resource('/translator','TranslatorsController');
+    Route::resource('/chaphkoneh','ChaphkonehController');
+
 
 //     Route::get('index', function () {
 //         return view('admin.index');

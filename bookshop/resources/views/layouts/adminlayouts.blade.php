@@ -387,10 +387,10 @@
                                 </span>
                             </a>
                             <ul class="collapse" id="DDL-nav">
-                                <a href="#"><i class="icon-angle-left"></i> ثبت چاپخانه جدید </a>
+                                <a href="<?= Url('admin\chaphkoneh\create')?>"><i class="icon-angle-left"></i> ثبت چاپخانه جدید </a>
                         </li>
                         <li>
-                            <a href="#"><i class="icon-angle-left"></i> نمایش و مدیریت چاپخانه ها </a>
+                            <a href="<?= Url('admin\chaphkoneh')?>"><i class="icon-angle-left"></i> نمایش و مدیریت چاپخانه ها </a>
                         </li>
                     </ul>
                     </li>
@@ -406,33 +406,19 @@
                             <li>
                                 <a href="#" data-parent="DDL4-nav" data-toggle="collapse" class="accordion-toggle"
                                     data-target="#DDL4_1-nav">
-                                    <i class="icon-sitemap"></i>&nbsp; لینک 1
+                                    <i class="icon-sitemap"></i>&nbsp; ثبت موضوع جدید
                                     <span class="pull-left" style="margin-left: 20px;">
                                         <i class="icon-angle-right"></i>
                                     </span>
                                 </a>
-                                <ul class="collapse" id="DDL4_1-nav">
-                                    <li>
-                                        <a href="#" data-parent="#DDL4_1-nav" data-toggle="collapse"
-                                            class="accordion-toggle" data-target="#DDL4_2-nav">
-                                            <i class="icon-sitemap"></i>&nbsp; لینک 1
-                                            <span class="pull-left" style="margin-left: 20px;">
-                                                <i class="icon-angle-right"></i>
-                                            </span>
-                                        </a>
-                                        <ul class="collapse" id="DDL4_2-nav">
-                                            <li><a href="#"><i class="icon-angle-left"></i> لینک 1 </a></li>
-                                            <li><a href="#"><i class="icon-angle-left"></i> لینک2 </a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="#"><i class="icon-angle-left"></i> لینک 2 </a></li>
-                                    <li><a href="#"><i class="icon-angle-left"></i> لینک 3 </a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#"><i class="icon-angle-left"></i> لینک 2 </a></li>
-                            <li><a href="#"><i class="icon-angle-left"></i> لینک 3 </a></li>
-                            <li><a href="#"><i class="icon-angle-left"></i> لینک4 </a></li>
-                        </ul>
+                                <a href="#" data-parent="DDL4-nav" data-toggle="collapse" class="accordion-toggle"
+                                data-target="#DDL4_1-nav">
+                                <i class="icon-sitemap"></i>&nbsp;  نمایش موضوعات و مدیریت آنها
+                                <span class="pull-left" style="margin-left: 20px;">
+                                    <i class="icon-angle-right"></i>
+                                </span>
+                            </a>
+                               
                     </li>
                     <li class="panel">
                         <a href="#" data-parent="#menu" data-toggle="collapse" class="accordion-toggle"
