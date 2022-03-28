@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\ChaphkonehsRequest;
 use App\ChaphkonehsModel;
+use  App\Requests;
 
 class ChaphkonehController extends Controller
 {
@@ -38,7 +39,7 @@ class ChaphkonehController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ChaphkonehsRequest $request)
     {
         //
         $chaphkoneh = new ChaphkonehsModel($request->all());
@@ -81,7 +82,7 @@ class ChaphkonehController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ChaphkonehsRequest $request, $id)
     {
         //
         $edit=ChaphkonehsModel::find($id);

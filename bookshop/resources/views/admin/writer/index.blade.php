@@ -21,11 +21,11 @@
                                 <p>
                                     تلفن : {{ $writer1->phone_writers }} <br>
                                     آدرس : {{ $writer1->address_writers }} <br>
-                            
-                           </p>
-                           <p>
-                                نشانی وب سایت : <a href="http://www.{{ $writer1->website_writers }}"
-                                    target="_balck">{{ $writer1->website_writers }}</a> </p>
+
+                                </p>
+                                <p>
+                                    نشانی وب سایت : <a href="http://www.{{ $writer1->website_writers }}"
+                                        target="_balck">{{ $writer1->website_writers }}</a> </p>
                             </div>
                             <div class="panel-footer">
                                 <button type="button" title="نمایش" class="btn btn-primary btn-circle btn-lg"
@@ -53,7 +53,8 @@
                                         <div class="modal-header">
                                             <button type="button" class="close" date-dismiss="modal"
                                                 aria-hidden="true">&times; </button>
-                                            <h4 class="modal-title" id="myModalLabe"> {{ $writer2->name_writers }}   {{ $writer2->lname_writers }}</h4>
+                                            <h4 class="modal-title" id="myModalLabe"> {{ $writer2->name_writers }}
+                                                {{ $writer2->lname_writers }}</h4>
                                         </div>
                                         <div class="modal-boby" style="margin-right: 10px">
                                             <p>
@@ -102,6 +103,7 @@
                             @endforeach
                         </div>
                     </div>
+                    <span style="text-align: center;">{!! $writer->render() !!}</span>
                 </div>
             </div>
         </div>

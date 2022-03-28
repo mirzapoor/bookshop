@@ -101,6 +101,8 @@
                             @endforeach
                         </div>
                     </div>
+                    <span style="text-align: center;">{!! $translator->render() !!}</span>
+
                 </div>
             </div>
         </div>

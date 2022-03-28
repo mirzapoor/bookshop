@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests\TranslatorsRequest;
-use App\MotarjemsModel;
-class TranslatorsController extends Controller
+use  App\SubjectsModel;
+use App\Http\Requests\CategoryRequest;
+use  App\Requests;
+
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +17,9 @@ class TranslatorsController extends Controller
     public function index()
     {
         //
-        $translator=MotarjemsModel::orderby('id','desc')->paginate(6);
-        return view('admin.translator.index',['translator'=>$translator]);
+        $categorys = SubjectsModel::orderBy('id','desc')->paginate(10);
+        return view('admin.category.index',['categorys'=>$categorys]);
+
     }
 
     /**
@@ -27,8 +30,8 @@ class TranslatorsController extends Controller
     public function create()
     {
         //
-        return view('admin.translator.create');
-
+        $category =['-'=>'نام دسته مادر را انتخاب کنید.']+ SubjectsModel::where('replay_subjects','-')->orderBy('id','desc')->pluck('name_subjects','id')->toArray();
+        return view('admin.category.create',['category'=>$category]);
     }
 
     /**
@@ -37,17 +40,18 @@ class TranslatorsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(TranslatorsRequest $request)
+    public function store(CategoryRequest $request)
     {
         //
-        $translator = new MotarjemsModel($request->all());
-        if ($translator->save()){
+        $category = new SubjectsModel($request->all());
+        if($category->save()){
             return redirect()->back();
         }
         else{
             return redirect()->back();
         }
     }
+   
 
     /**
      * Display the specified resource.
@@ -69,8 +73,12 @@ class TranslatorsController extends Controller
     public function edit($id)
     {
         //
-        $record =MotarjemsModel::find($id);
-        return view('admin.translator.edit',['record' =>$record]);
+        $category =['-'=>'نام دسته مادر را انتخاب کنید.']+ SubjectsModel::
+        where('replay_subjects',
+        '-')->orderBy('id','desc')->pluck('name_subjects','id')->toArray();
+        $record =SubjectsModel::find($id);
+
+        return view('admin.category.edit',['category'=>$category,'record' =>$record]);
     }
 
     /**
@@ -80,17 +88,18 @@ class TranslatorsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(TranslatorsRequest $request, $id)
+    public function update(CategoryRequest $request, $id)
     {
         //
-        $edit=MotarjemsModel::find($id);
+        $edit=SubjectsModel::find($id);
         if($edit->update($request->all())){
-            return redirect('admin/translator');
+            return redirect('admin/category');
         }
         else{
 
         }
     }
+    
 
     /**
      * Remove the specified resource from storage.
@@ -101,7 +110,13 @@ class TranslatorsController extends Controller
     public function destroy($id)
     {
         //
-        $delete =MotarjemsModel::find($id)->delete();
-        return redirect('admin/translator');
+           $get = SubjectsModel::where('replay_subjects',$id)->get();
+           foreach($get as $value)
+            {
+
+                $update =SubjectsModel::where('id',$value->id)->update(['replay_subjects'=>'-']);
+            }
+          $delete =SubjectsModel::find($id)->delete();
+          return redirect('admin/category');
     }
 }

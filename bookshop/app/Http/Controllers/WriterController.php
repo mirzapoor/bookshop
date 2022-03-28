@@ -84,7 +84,7 @@ class WriterController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(WritersRequest $request, $id)
     {
         //
         $edit=WritersModel::find($id);

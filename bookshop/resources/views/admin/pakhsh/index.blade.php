@@ -100,6 +100,8 @@
                             @endforeach
                         </div>
                     </div>
+                    <span style="text-align: center;">{!! $pakhsh->render() !!}</span>
+
                 </div>
             </div>
         </div>

@@ -103,6 +103,8 @@
                             @endforeach
                         </div>
                     </div>
+                    <span style="text-align: center;">{!! $chaphkoneh->render() !!}</span>
+
                 </div>
             </div>
         </div>

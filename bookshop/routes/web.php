@@ -24,12 +24,10 @@ Route::prefix('admin')->group(function () {
     Route::resource('/writer','WriterController');
     Route::resource('/translator','TranslatorsController');
     Route::resource('/chaphkoneh','ChaphkonehController');
+Route::resource('/category', 'CategoryController');
 
+    Route::get('index', function () {
+        return view('admin.index');
+    });
 
-//     Route::get('index', function () {
-//         return view('admin.index');
-//     });
-//     Route::get('books', function () {
-        
-//     });
  }); 

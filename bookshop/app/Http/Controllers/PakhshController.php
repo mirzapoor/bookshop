@@ -79,7 +79,7 @@ class PakhshController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(PakhshRequest $request, $id)
     {
         //
         $edit=PakhshModel::find($id);
