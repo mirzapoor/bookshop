@@ -410,14 +410,14 @@
                 </a>
                 <ul class="collapse" id="DDL4-nav">
                     <li>
-                        <a href="<?= Url('admin\category/create') ?>" data-parent="DDL4-nav" data-toggle="collapse" class="accordion-toggle"
-                            data-target="#DDL4_1-nav">
+                        <a href="<?= Url('admin\category/create') ?>" data-parent="DDL4-nav" data-toggle="collapse"
+                            class="accordion-toggle" data-target="#DDL4_1-nav">
                             <i class="icon-angle-left"></i> ثبت موضوع جدید
                             <span class="pull-left" style="margin-left: 20px;">
                             </span>
                         </a>
-                        <a href="<?= Url('admin\category') ?>" data-parent="DDL4-nav" data-toggle="collapse" class="accordion-toggle"
-                            data-target="#DDL4_1-nav">
+                        <a href="<?= Url('admin\category') ?>" data-parent="DDL4-nav" data-toggle="collapse"
+                            class="accordion-toggle" data-target="#DDL4_1-nav">
                             <i class="icon-angle-left"></i> نمایش موضوعات و مدیریت آنها
                             <span class="pull-left" style="margin-left: 20px;">
                             </span>
@@ -435,11 +435,10 @@
                     &nbsp; <span class="label label-warning">5</span>&nbsp;
                 </a>
                 <ul class="collapse" id="error-nav">
-                    <li><a href="errors_403.html"><i class="icon-angle-left"></i> خطای 403 </a></li>
-                    <li><a href="errors_404.html"><i class="icon-angle-left"></i> خطای 404 </a></li>
-                    <li><a href="errors_405.html"><i class="icon-angle-left"></i> خطای 405 </a></li>
-                    <li><a href="errors_500.html"><i class="icon-angle-left"></i> خطای 500 </a></li>
-                    <li><a href="errors_503.html"><i class="icon-angle-left"></i> خطای 503 </a></li>
+                    <li><a href="<?= Url('admin\users\create') ?>"><i class="icon-angle-left"></i>ثبت کاربر جدید</a>
+                    </li>
+                    <li><a href="<?= Url('admin\users') ?>"><i class="icon-angle-left"></i> نمایش و مدیریت کاربران</a>
+                    </li>
                 </ul>
             </li>
             <li><a href="gallery.html"><i class="icon-film"></i> دیدگاه ها </a></li>
