@@ -25,7 +25,8 @@ Route::prefix('admin')->group(function () {
     Route::resource('/translator','TranslatorsController');
     Route::resource('/chaphkoneh','ChaphkonehController');
     Route::resource('/category', 'CategoryController');
-    Route::resource('users', 'UserController');
+    Route::resource('/users', 'UserController');
+    Route::resource('/books', 'BookController');
     Route::get('index', function () {
         return view('admin.index');
     });
