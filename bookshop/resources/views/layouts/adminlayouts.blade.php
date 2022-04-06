@@ -317,16 +317,13 @@
                     <a href="#" data-parent="#menu" data-toggle="collapse" class="accordion-toggle"
                         data-target="#component-nav">
                         <i class="icon-tasks"> </i> مدیریت کتاب های سایت
-                        <span class="pull-left">
-                            <i class="icon-angle-right"></i>
-                        </span>
-                        &nbsp; <span class="label label-default">10</span>&nbsp;
+                      
                     </a>
                     <ul class="collapse" id="component-nav">
-                        <li class=""><a href="button.html"><i class="icon-angle-left"></i> ایجاد
+                        <li class=""><a href="<?= url('admin/books/create') ?>"><i class="icon-angle-left"></i> ایجاد
                                 کتاب
                                 جدید </a></li>
-                        <li class="active"><a href="icon.html"><i class="icon-angle-left"></i> نمایش و
+                        <li class="active"><a href="<?= url('admin/books') ?>"><i class="icon-angle-left"></i> نمایش و
                                 مدیریت
                                 کتب </a></li>
                     </ul>
