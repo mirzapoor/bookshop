@@ -42,24 +42,24 @@
                                                         title="{{ $book->name_book }}">
                                                 </td>
                                                 @if ($book->state_book == '0')
-                                                    <td style="color: black;background:yellow;">در انبار موجود هست . </td>
+                                                    <td style="color: black;background:rgb(10, 138, 34);">در انبار موجود هست . </td>
                                                 @elseif($book->state_book == '1')
-                                                    <td style="color: black;background:rgb(9, 179, 51);">در انبار موجود نیست
+                                                    <td style="color: black;background:rgb(136, 20, 20)">در انبار موجود نیست
                                                         . </td>
                                                 @elseif($book->state_book == '2')
-                                                    <td style="color: black;background:rgb(15, 24, 143);">کاربران اجازه
+                                                    <td style="color: black;background:rgb(232, 12, 12);">کاربران اجازه
                                                         خریده ندارند </td>
                                                 @elseif($book->state_book == '3')
-                                                    <td style="color: black;background:rgb(136, 20, 20);">کتاب در فروش ویژه
+                                                    <td style="color: black;background:rgb(9, 179, 51);;">کتاب در فروش ویژه
                                                         قرار گرفته </td>
                                                 @else
-                                                    <td style="color: black;background:rgb(136, 20, 20);">نامعلوم</td>
+                                                    <td style="color: black;background:rgb(59, 3, 3);">نامعلوم</td>
                                                 @endif
-                                                <td>{{ $book->view_book }}</td>
+                                                <td style="width: ">{{ $book->view_book }}</td>
                                                 <td>
                                                     <a href="<?= Url('admin/books/' . $book->id . '/edit') ?>"
-                                                        class="btn btn-primary btn-sm btn-line"> ویرایش</a>
-                                                    <a href="#" class="btn btn-danger btn-sm btn-line" data-toggle="modal"
+                                                        class="btn btn-primary btn-sm btn-line mb-1" style="margin-bottom: 10px; width:50px ; margin-right: 10px;"> ویرایش</a>
+                                                    <a href="#" class="btn btn-danger btn-sm btn-line m" style="width: 50px ; margin-right: 10px;" data-toggle="modal"
                                                         data-target="#delete{{ $book->id }}"> حذف
                                                 </td>
                                             </tr>
@@ -68,7 +68,7 @@
                                 </table>
                             </div>
                             <div class="row">
-                                <div class="col-lg-12">
+                                <div class="col-lg-12" style="margin-right: ">
                                     @foreach ($books as $book)
                                         <div class='modal fade' id="delete{{ $book->id }}" tabindex="-1" role="dialog"
                                             aria-labelledby="myModalLabel" aria-hidden="true">

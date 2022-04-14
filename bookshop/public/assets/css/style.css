@@ -254,6 +254,10 @@ body.fixed .pattern-switcher {
   display: block;
 }
 
+.g-continer{
+  display: grid;
+grid-auto-rows:minmax(50%,auto);}
+
 @media (min-width: 1280px) {
     body.fixed #top > .navbar {
     width:1280px;

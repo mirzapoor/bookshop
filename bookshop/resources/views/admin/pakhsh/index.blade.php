@@ -1,6 +1,6 @@
 @extends('layouts.adminlayouts')
 @section('content')
-    <div id="content">
+    <div id="content" >
         <div class="inner" style="min-height:700px;">
             <div class='class-lg-6'>
                 <div class="row">
@@ -10,18 +10,18 @@
             <hr>
             <div class="row" style="margin-top: 30px">
                 @foreach ($pakhsh as $pakhsh1)
-                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                        <div class="panel panel-primary">
-                            <div class="panel-heading">
+                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 container ">
+                        <div class="panel panel-primary box ">
+                            <div class="panel-heading ">
                                 {{ $pakhsh1->name_pakhsh }}
                             </div>
                             <div class="panel-body">
                                 <p>
                                     تلفن : {{ $pakhsh1->phone_pakhsh }} <br>
-                                    آدرس : {{ $pakhsh1->website_pakhsh }} <br>
+                                    آدرس : {{ $pakhsh1->address_pakhsh }} <br>
                                
-                                 نشانی وب سایت : <a href="http://www.{{ $pakhsh1->website_pakhsh }}"
-                                    target="_balck">{{ $pakhsh1->website_pakhsh }}</a> </p>
+                               نشانی وب سایت : <a href="http://www.{{ $pakhsh1->website_pakhsh }}"
+                                    target="_balck">{{ $pakhsh1->website_pakhsh }}</p></a> 
                             </div>
                             <div class="panel-footer">
                                 <button type="button" title="نمایش" class="btn btn-primary btn-circle btn-lg"

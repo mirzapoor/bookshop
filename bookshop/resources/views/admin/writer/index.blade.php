@@ -4,7 +4,7 @@
         <div class="inner" style="min-height:700px;">
             <div class='class-lg-6'>
                 <div class="row">
-                    <h1> تمامی مراکز پخش ثبت شده</h1>
+                    <h1> تمامی  ناشران ثبت شده</h1>
                 </div>
             </div>
             <hr>

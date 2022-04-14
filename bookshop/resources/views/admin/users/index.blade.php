@@ -43,9 +43,9 @@
                                                 </td>
                                                 <td>
                                                     <a href="<?= Url('admin/users/' . $user->id . '/edit') ?>"
-                                                        class="btn btn-primary btn-sm btn-line"> ویرایش</a>
+                                                        class="btn btn-primary btn-sm btn-line" style="margin-bottom: 10px; width:50px ; margin-right: 10px;" > ویرایش</a>
                                                     <a href="#" class="btn btn-danger btn-sm btn-line" data-toggle="modal"
-                                                        data-target="#delete{{ $user->id }}"> حذف
+                                                        data-target="#delete{{ $user->id }}" style="margin-bottom: 10px; width:50px ; margin-right: 10px;"> حذف
                                                 </td>
                                             </tr>
                                         @endforeach

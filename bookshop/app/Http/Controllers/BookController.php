@@ -114,7 +114,7 @@ class BookController extends Controller
                                                     'details_countprints'=>$request->details_countprints,
                                                     'id_books'=>$book->id,
                                             ]);
-        return ('admin/books');
+        return  redirect()->back();
         }
 
     }

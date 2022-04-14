@@ -96,8 +96,8 @@
                     <div style="margin-left: 30px">
                         {{ Form::label('email_pakhsh', 'ایمیل مرکز پخش', ['class' => 'control-label cal-lg-3']) }}
                     </div>
-                    <div class="form-group input-group col-lg-7">
-                        <span class="input-group-addon ">@</span>
+                    <div class="form-group input-group col-lg-7 " >
+                        <span class="input-group-addon ">gmail.com@</span>
                         {!! Form::text('email_pakhsh', null, ['class' => 'form-control', 'placeholder' => ' ایمیل مرکز پخش را وارد کنید.']) !!}
                     </div>
                     {{ Form::label('website_pakhsh', 'نشانی وب', ['class' => 'control-label cal-lg-3 marginrl']) }}

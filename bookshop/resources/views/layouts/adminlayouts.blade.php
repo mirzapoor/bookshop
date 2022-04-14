@@ -22,17 +22,14 @@
     <link rel="stylesheet" href="http://localhost:8000/assets/css/theme.css" />
     <link rel="stylesheet" href="http://localhost:8000/assets/css/MoneAdmin.css" />
     <link rel="stylesheet" href="http://localhost:8000/assets/plugins/Font-Awesome/css/font-awesome.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+
     <!--END GLOBAL STYLES -->
     <!-- PAGE LEVEL STYLES -->
     <link href="http://localhost:8000/assets/css/layout2.css" rel="stylesheet" />
     <link href="http://localhost:8000/assets/plugins/flot/examples/examples.css" rel="stylesheet" />
     <link rel="stylesheet" href="http://localhost:8000/assets/plugins/timeline/timeline.css" />
-    <!-- END PAGE LEVEL  STYLES -->
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-    <![endif]-->
+
     @yield('head')
 </head>
 <!-- END HEAD -->
@@ -52,8 +49,6 @@
                 <!-- LOGO SECTION -->
                 <header class="navbar-header">
                     <a href="index.html" class="navbar-brand">
-                        <img src="<?= url('assets/img/logo.png') ?>" alt="" height="30" />
-                        <h1 class="site-title">ایران نهاد</h1>
                     </a>
                 </header>
                 <!-- END LOGO SECTION -->
@@ -290,10 +285,10 @@
         <!-- END HEADER SECTION -->
         <!-- MENU SECTION -->
         <div id="right">
-            <div class="media user-media well-small">
+            {{-- <div class="media user-media well-small">
                 <a class="user-link" href="#">
                     <img class="media-object img-thumbnail user-img" alt="User Picture"
-                        src="<?= url('assets/img/user.gif') ?>" />
+                        src="assets/img/user.gif" />
                 </a>
                 <br />
                 <div class="media-body">
@@ -306,7 +301,7 @@
                     </ul>
                 </div>
                 <br />
-            </div>
+            </div> --}}
             <ul id="menu" class="collapse">
                 <li class="panel active">
                     <a href="<?= url('admin/index') ?>">
@@ -320,10 +315,10 @@
                       
                     </a>
                     <ul class="collapse" id="component-nav">
-                        <li class=""><a href="<?= url('admin/books/create') ?>"><i class="icon-angle-left"></i> ایجاد
+                        <li class=""><a href="<?= url('admin/books/create') ;?>"><i class="icon-angle-left"></i> ایجاد
                                 کتاب
                                 جدید </a></li>
-                        <li class="active"><a href="<?= url('admin/books') ?>"><i class="icon-angle-left"></i> نمایش و
+                        <li class="active"><a href="<?= url('admin/books'); ?>"><i class="icon-angle-left"></i> نمایش و
                                 مدیریت
                                 کتب </a></li>
                     </ul>
@@ -355,10 +350,10 @@
                         </span>
                     </a>
                     <ul class="collapse" id="pagesr-nav">
-                        <li><a href="<?= Url('admin\writer\create') ?>"><i class="icon-angle-left"></i> ایجاد نویسنده
+                        <li><a href="<?= Url('admin/writer/create') ;?>"><i class="icon-angle-left"></i> ایجاد نویسنده
                                 جدید </a>
                         </li>
-                        <li><a href="<?= Url('admin\writer') ?>"><i class="icon-angle-left"></i>نمایش و مدیریت
+                        <li><a href="<?= Url('admin/writer') ;?>"><i class="icon-angle-left"></i>نمایش و مدیریت
                                 نویسندگان
                             </a>
                         </li>
@@ -373,9 +368,9 @@
                         </span>
                     </a>
                     <ul class="collapse" id="chart-nav">
-                        <li><a href="<?= Url('admin\translator\create') ?>"><i class="icon-angle-left"></i> ثبت مترجم
+                        <li><a href="<?= Url('admin/translator/create'); ?>"><i class="icon-angle-left"></i> ثبت مترجم
                                 جدید </a></li>
-                        <li><a href="<?= Url('admin\translator') ?>"><i class="icon-angle-left"></i> نمایش و مدیریت
+                        <li><a href="<?= Url('admin/translator'); ?>"><i class="icon-angle-left"></i> نمایش و مدیریت
                                 مترجمین</a></li>
                     </ul>
                 </li>
@@ -388,11 +383,11 @@
                         </span>
                     </a>
                     <ul class="collapse" id="DDL-nav">
-                        <a href="<?= Url('admin\chaphkoneh\create') ?>"><i class="icon-angle-left"></i> ثبت چاپخانه
+                        <a href="<?= Url('admin/chaphkoneh/create'); ?>"><i class="icon-angle-left"></i> ثبت چاپخانه
                             جدید </a>
                 </li>
                 <li>
-                    <a href="<?= Url('admin\chaphkoneh') ?>"><i class="icon-angle-left"></i> نمایش و مدیریت چاپخانه ها
+                    <a href="<?= Url('admin/chaphkoneh'); ?>"><i class="icon-angle-left"></i> نمایش و مدیریت چاپخانه ها
                     </a>
                 </li>
             </ul>
@@ -407,13 +402,13 @@
                 </a>
                 <ul class="collapse" id="DDL4-nav">
                     <li>
-                        <a href="<?= Url('admin\category/create') ?>" data-parent="DDL4-nav" data-toggle="collapse"
+                        <a href="<?= Url('admin/category/create'); ?>" data-parent="DDL4-nav" data-toggle="collapse"
                             class="accordion-toggle" data-target="#DDL4_1-nav">
                             <i class="icon-angle-left"></i> ثبت موضوع جدید
                             <span class="pull-left" style="margin-left: 20px;">
                             </span>
                         </a>
-                        <a href="<?= Url('admin\category') ?>" data-parent="DDL4-nav" data-toggle="collapse"
+                        <a href="<?= Url('admin/category'); ?>" data-parent="DDL4-nav" data-toggle="collapse"
                             class="accordion-toggle" data-target="#DDL4_1-nav">
                             <i class="icon-angle-left"></i> نمایش موضوعات و مدیریت آنها
                             <span class="pull-left" style="margin-left: 20px;">
@@ -425,20 +420,20 @@
             <li class="panel">
                 <a href="#" data-parent="#menu" data-toggle="collapse" class="accordion-toggle"
                     data-target="#error-nav">
-                    <i class="icon-warning-sign"></i> مدیریت کاربران
+                    <i class="fa-solid fa-user"></i> مدیریت کاربران
                     <span class="pull-left">
                         <i class="icon-angle-right"></i>
                     </span>
                     &nbsp; <span class="label label-warning">5</span>&nbsp;
                 </a>
                 <ul class="collapse" id="error-nav">
-                    <li><a href="<?= Url('admin\users\create') ?>"><i class="icon-angle-left"></i>ثبت کاربر جدید</a>
+                    <li><a href="<?= Url('admin/users/create'); ?>"><i class="icon-angle-left"></i>ثبت کاربر جدید</a>
                     </li>
-                    <li><a href="<?= Url('admin\users') ?>"><i class="icon-angle-left"></i> نمایش و مدیریت کاربران</a>
+                    <li><a href="<?= Url('admin/users') ;?>"><i class="icon-angle-left"></i> نمایش و مدیریت کاربران</a>
                     </li>
                 </ul>
             </li>
-            <li><a href="gallery.html"><i class="icon-film"></i> دیدگاه ها </a></li>
+            <li><a href="#"><i class="fa-solid fa-comment"></i> دیدگاه ها </a></li>
             <li class="panel">
                 <a href="#" data-parent="#menu" data-toggle="collapse" class="accordion-toggle"
                     data-target="#blank-nav">
@@ -464,37 +459,20 @@
         <div id="left">
             <div class="well well-small">
                 <ul class="list-unstyled">
-                    <li>بازدیدکنندگان : <span>23,000</span></li>
+                    <li >بازدیدکنندگان : <span>23,000</span></li>
                     <li>کاربران : <span>53,000</span></li>
                     <li>ثبت نام کنندگان : <span>3,000</span></li>
                 </ul>
             </div>
             <div class="well well-small">
-                <button class="btn btn-block"> راهنما </button>
-                <button class="btn btn-primary btn-block"> تیکت ها</button>
-                <button class="btn btn-info btn-block"> تازه ها </button>
-                <button class="btn btn-success btn-block"> کاربران </button>
-                <button class="btn btn-danger btn-block"> سود </button>
-                <button class="btn btn-warning btn-block"> فروش </button>
-                <button class="btn btn-inverse btn-block"> موجودی </button>
-            </div>
-            <div class="well well-small">
-                <span>سود</span><span class="pull-left"><small>20%</small></span>
-                <div class="progress mini">
-                    <div class="progress-bar progress-bar-info" style="width: 20%"></div>
-                </div>
-                <span>فروش</span><span class="pull-left"><small>40%</small></span>
-                <div class="progress mini">
-                    <div class="progress-bar progress-bar-success" style="width: 40%"></div>
-                </div>
-                <span>در حال انتظار</span><span class="pull-left"><small>60%</small></span>
-                <div class="progress mini">
-                    <div class="progress-bar progress-bar-warning" style="width: 60%"></div>
-                </div>
-                <span>خلاصه</span><span class="pull-left"><small>80%</small></span>
-                <div class="progress mini">
-                    <div class="progress-bar progress-bar-danger" style="width: 80%"></div>
-                </div>
+                <a class="btn btn-white btn-block "  href="<?= url('admin/books'); ?>">راهنما</a>
+
+                <a class="btn btn-primary btn-block"  href="<?= url('admin/books'); ?>"> کتاب ها</a>
+                <a class="btn btn-info btn-block" href="<?= Url('admin/translator'); ?>">مترجمین</a>
+                <a class="btn btn-success btn-block" href="<?= Url('admin/writer') ;?>">نویسندگان</a>
+                <a class="btn btn-danger btn-block" href="">سفارشات</a>
+                <a class="btn btn-warning btn-block" href=""> دیدگاه ها </a>
+                <a class="btn btn-info btn-block" href="<?= Url('admin/users') ;?>"> کاربران </a>
             </div>
         </div>
         <!-- END RIGHT STRIP  SECTION -->
@@ -502,7 +480,6 @@
     <!--END MAIN WRAPPER -->
     <!-- FOOTER -->
     <div id="footer">
-        <p>کلیه حقوق سایت متعلق به <a href="http://www.i-nahad.ir">ایران نهاد</a> می باشد.</p>
     </div>
     <!--END FOOTER -->
     <!-- GLOBAL SCRIPTS -->

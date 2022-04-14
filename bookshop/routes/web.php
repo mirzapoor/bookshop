@@ -10,17 +10,13 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
+Route::get('/','HomeController@index');
+Route::get('/category/{category}','HomeController@category');
+Route::get('/book/{url}','HomeController@single');
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-
 Route::prefix('admin')->group(function () {
-    Route::resource('/pakhsh', 'PakhshController');
+    Route::resource('/pakhsh','PakhshController');
     Route::resource('/writer','WriterController');
     Route::resource('/translator','TranslatorsController');
     Route::resource('/chaphkoneh','ChaphkonehController');

@@ -40,6 +40,7 @@
                                                 {!! Form::text('price_book', null, ['class' => 'form-control', 'placeholder' => 'قیمت کتاب را وارد کنید.']) !!}
                                             </div>
                                         </div>
+                                        
                                         <div class="form-group">
                                             {{ Form::label('shabook_book', 'شابک کتاب', ['class' => 'control-label cal-lg-3']) }}
                                             <div class="col-lg-7">
@@ -53,11 +54,13 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            {{ Form::label('details_book', 'توضیحات', ['class' => 'control-label cal-lg-3']) }}
+                                            {{ Form::label('details_book', 'مشخصات کتاب', ['class' => 'control-label cal-lg-3']) }}
                                             <div class="col-lg-7">
-                                                {!! Form::textarea('details_book', null, ['class' => 'ckeditor', 'form-control', 'placeholder' => 'توضیحات کتاب را وارد کنید.']) !!}
+                                                {!! Form::textarea('details_book', null, ['class' => 'ckeditor', 'form-control', 'placeholder' => 'مشخصات کتاب را وارد کنید.']) !!}
                                             </div>
                                         </div>
+
+                                        
                                     </div>
                                 </div>
                             </div>
