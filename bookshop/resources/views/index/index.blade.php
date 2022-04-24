@@ -1,6 +1,10 @@
 @extends('layouts.index.home')
 
 @section('head')
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <link rel="stylesheet" href="<?= Url('index/css/main.css') ?>">
+    <link rel="stylesheet" href="<?= Url('index/css/style_cart.css') ?>">
 @endsection
 
 @section('menunavbar')
@@ -9,7 +13,7 @@
             <a class="nav-link h2 ml-5 text-white" href="<?= Url('/') ?>">خانه</a>
         </li>
         <li class="nav-item ">
-            <a class="nav-link h2 ml-5 text-white" href="<?= Url('/') ?>">فروشگاه</a>
+            <a class="nav-link h2 ml-5 text-white" href="<?= Url('/shop') ?>">فروشگاه</a>
         </li>
         @foreach ($category as $categorys)
             <li class="nav-item dropdown">
@@ -34,8 +38,12 @@
 @endsection
 
 @section('cart')
+<?php
+$count = sizeof([Session::get('cart')]); ?>
+<a href="/cart" class="cart-btn nav-icon "><i class="fas fa-cart-plus">
+        <div class="cart-items">{{ $count }}</div> </i></a>
     @include('index.cart')
-@endsection
+@endsection 
 {{-- slideshow --}}
 @section('slideshow')
     @foreach (getbookstar() as $bookstar)
@@ -60,7 +68,7 @@
             <div class="content">
                 <h4>{{ $bookstar->name_book }}</h4>
                 <div class="price">هزارتومن{{ $bookstar->price_book }} <span> </span></div>
-                <a href="#" class="btn">اضافه کردن به سبد خرید</a>
+                <div onclick="add_cart('{{ $bookstar->id }}')" class="btn"> افزودن به سبد خرید</div>
             </div>
         </div>
     @endforeach
@@ -150,12 +158,35 @@
                 @if ($favorit->state_book == '1' || $favorit->state_book == '2')
                     <a href="#" class="btn btn-hover disabled" style="background-color: red">ناموجود</a>
                 @else
-                    <a href="#" class="btn">اضافه کردن به سبد خرید</a>
+                    <div onclick="add_cart('{{ $bookstar->id }}')" class="btn">اضافه کردن به سبد خرید</div>
                 @endif
             </div>
         </div>
     @endforeach
 @endsection
+
+@section('footer')
+    <?php $url10 = Url('/cart'); ?>
+    <script type="text/javascript">
+        add_cart = function(id) {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $.ajax({
+                url: '<?= $url10 ?>',
+                type: "POST",
+                data: 'id_book=' + id,
+                success: function(data) {
+                    alert(data);
+                }
+            });
+        }
+    </script>
+    <script src="<?= Url('index/js/scripts.js') ?>"></script>
+@endsection
+
 
 <?php
 use App\SubjectsModel;

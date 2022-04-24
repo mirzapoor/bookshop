@@ -13,6 +13,9 @@
 Route::get('/','HomeController@index');
 Route::get('/category/{category}','HomeController@category');
 Route::get('/book/{url}','HomeController@single');
+Route::post('/cart','HomeController@addCart');
+Route::get('/shop','HomeController@shop');
+
 Auth::routes();
 
 Route::prefix('admin')->group(function () {

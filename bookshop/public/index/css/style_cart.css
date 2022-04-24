@@ -90,7 +90,22 @@ section{
 .btn:hover{
     background:var(--dark-color);
 }
-
+.cart-btn {
+    position: relative;
+    cursor: pointer;
+  }
+.nav-icon {
+    font-size: 2rem;
+  }
+.cart-items {
+    position: absolute;
+    top: -8px;
+    right: -1px;
+    background: var(--primaryColor);
+    padding: 0 5px;
+    border-radius: 30%;
+    color:#219150;
+  } 
 .header .header-1{
     background:#fff;
     padding:1.5rem 9%;
@@ -366,67 +381,6 @@ section{
     font-size: 1.4rem;
     color:var(--light-color);
 }
-
-.header-1 .icons .headerLeft .top-menu ul.main-menu{
-    padding: 0;
-    
-
-}
-
-
-.header-1 .icons .headerLeft .top-menu ul.main-menu li{
-       display: inline-block;
-       margin: 0 0 0 8px;
-       position: relative;
-   
-   }
-   
- .header-1 .icons  .top-menu ul.main-menu > li > a{
-       display: inline-block;
-       padding: 15px  0 ;
-       color: #313131;
-   }
-.header-1 .icons .top-menu ul.main-menu li ul{
-       position: absolute;
-       width: 350px;
-       height: 300px;
-       text-align: right;
-       top: 60px;
-       right: -250px;
-       border: 1px solid #eee;
-       padding: 0;
-       padding: 5px;
-       opacity: 0;
-       visibility: hidden;
-       transition: all 0.4s ease;
-       overflow: scroll;
-       background-color: #eee;
-   
-   }
-   
-.header-1 .icons .headerLeft .top-menu ul.main-menu li ul >li{
-       display: block;
-      
-   
-   }
-.header-1 .icons .headerLeft .top-menu ul.main-menu li ul >li >a{
-       display: block;
-       padding: 7px;
-       font-size: 14px;
-       text-align: right;
-       
-      
-   
-   }
-.header-1 .icons .headerLeft .top-menu ul.main-menu li:hover > ul{
-       opacity: 1;
-       visibility: visible;
-       transition: all 0.4s ease;
-       top: 20px;
-   
-   
-   }
-   
 
 .featured .featured-slider .box{
     margin:2rem 0;
