@@ -16,6 +16,7 @@ Route::get('/book/{url}','HomeController@single');
 Route::post('/cart','HomeController@addCart');
 Route::get('/shop','HomeController@shop');
 
+
 Auth::routes();
 
 Route::prefix('admin')->group(function () {
