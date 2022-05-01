@@ -47,7 +47,7 @@ $count = sizeof([Session::get('cart')]); ?>
 {{-- slideshow --}}
 @section('slideshow')
     @foreach (getbookstar() as $bookstar)
-        <a href="#" class="swiper-slide mr-5 ml-4"><img src="<?= Url('assets/img/imagebook/' . $bookstar->img_book) ?>"
+        <a href="<?= Url('book/' . $bookstar->url_book) ?>" class="swiper-slide mr-5 ml-4"><img src="<?= Url('assets/img/imagebook/' . $bookstar->img_book) ?>"
                 alt="" /></a>
     @endforeach
 @endsection
@@ -62,8 +62,9 @@ $count = sizeof([Session::get('cart')]); ?>
                 <a href="#" class="fas fa-eye"></a>
             </div>
             <div class="image">
-                <img src=" <?= Url('assets/img/imagebook/' . $bookstar->img_book) ?>" alt="{{ $bookstar->name_book }}"
-                    title="{{ $bookstar->name_book }}" />
+               <a href="<?= Url('book/' . $bookstar->url_book) ?>"> <img src=" <?= Url('assets/img/imagebook/' . $bookstar->img_book) ?>" alt="{{ $bookstar->name_book }}"
+                title="{{ $bookstar->name_book }}" /></a> 
+              
             </div>
             <div class="content">
                 <h4>{{ $bookstar->name_book }}</h4>
@@ -78,7 +79,7 @@ $count = sizeof([Session::get('cart')]); ?>
     <div class="swiper-wrapper">
 
         @foreach ($newcontent as $new)
-            <a href="#" class="swiper-slide box">
+            <a href="<?= Url('book/' . $new->url_book) ?>" class="swiper-slide box">
                 <div class="image">
                     <img src="<?= Url('assets/img/imagebook/' . $new->img_book) ?>" alt="{{ $new->name_book }}"
                         title="{{ $new->name_book }}" />
@@ -111,7 +112,7 @@ $count = sizeof([Session::get('cart')]); ?>
     <div class="swiper-wrapper">
 
         @foreach ($newcontent2 as $new2)
-            <a href="#" class="swiper-slide box">
+            <a href="<?= Url('book/' . $new2->url_book) ?>" class="swiper-slide box">
                 <div class="image">
                     <img src="<?= Url('assets/img/imagebook/' . $new2->img_book) ?>" alt="{{ $new2->name_book }}"
                         title="{{ $new2->name_book }}" />
@@ -149,8 +150,9 @@ $count = sizeof([Session::get('cart')]); ?>
                 <a href="#" class="fas fa-eye"></a>
             </div>
             <div class="image">
-                <img src=" <?= Url('assets/img/imagebook/' . $favorit->img_book) ?>" alt="{{ $favorit->name_book }}"
-                    title="{{ $favorit->name_book }}" />
+               <a href="<?= Url('book/' . $favorit->url_book) ?>"><img src=" <?= Url('assets/img/imagebook/' . $favorit->img_book) ?>" alt="{{ $favorit->name_book }}"
+                title="{{ $favorit->name_book }}" /></a> 
+               
             </div>
             <div class="content">
                 <h4>{{ $favorit->name_book }}</h4>

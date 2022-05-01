@@ -433,8 +433,13 @@
                     </li>
                 </ul>
             </li>
-            <li><a href="#"><i class="fa-solid fa-comment"></i> دیدگاه ها </a></li>
-            <li class="panel">
+            <li><a href="<?= Url('admin/comments'); ?>"><i class="icon-table"></i> دیدگاه ها 
+                &nbsp;
+              {{-- @if( countcomment() == 0 )
+              @else
+              <span class="label label-danger">{{ countcomment() }}</span>&nbsp; 
+              @endif --}}
+      </a></li>            <li class="panel">
                 <a href="#" data-parent="#menu" data-toggle="collapse" class="accordion-toggle"
                     data-target="#blank-nav">
                     <i class="icon-check-empty"></i> مدیریت سفارشات

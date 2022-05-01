@@ -15,6 +15,8 @@ Route::get('/category/{category}','HomeController@category');
 Route::get('/book/{url}','HomeController@single');
 Route::post('/cart','HomeController@addCart');
 Route::get('/shop','HomeController@shop');
+Route::post('/comment','HomeController@comment');
+
 
 
 Auth::routes();
@@ -27,6 +29,8 @@ Route::prefix('admin')->group(function () {
     Route::resource('/category', 'CategoryController');
     Route::resource('/users', 'UserController');
     Route::resource('/books', 'BookController');
+    Route::resource('/comments','CommentController');
+	Route::get('/comments/success/{id}','CommentController@success');
     Route::get('index', function () {
         return view('admin.index');
     });

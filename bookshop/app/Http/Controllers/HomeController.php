@@ -9,6 +9,7 @@ use App\MoalefBooksModel;
 use App\BookMotarjemModel;
 use App\PakhshBooksModel;
 use App\CountPrintsModel;
+use App\CommentsModel;
 Use Session;
 
 class HomeController extends Controller
@@ -62,14 +63,14 @@ class HomeController extends Controller
 
         $countprint = CountPrintsModel::where('id_books',$record->id)->orderby('id','desc')->first();
 
-        // $comments = CommentModel::where(['id_books'=>$record->id,'replaye_comments'=>'-','state'=>1])->get();
+        $comments = CommentsModel::where(['id_books'=>$record->id,'replaye_comments'=>'-','state'=>1])->get();
 
         $record->view_book += 1;
 
         if ( $record->update() ) {
             
             return View('index.single',['category'=>$category,'record'=>$record,'moalefs'=>$moalefs,'motarjems'=>$motarjems,
-            'pakhshs'=>$pakhshs,'countprint'=>$countprint]);
+            'pakhshs'=>$pakhshs,'countprint'=>$countprint,'comments'=>$comments]);
          } 
     }
 
@@ -105,5 +106,19 @@ class HomeController extends Controller
         $order_date= BooksModel::orderby('id','desc');
         $books = BooksModel::orderby('id','desc')->paginate(6);
         return View('index.shop',['category'=>$category,'books'=>$books ,'order_date'=> $order_date]);
+    }
+
+    public function comment( Request $request )
+    {
+        $comment = new CommentsModel( $request->all() );
+        $comment->replaye_comments = '-';
+        $comment->state = '0';
+
+        $url = BooksModel::where('id',$request->id_books)->first()['url_book'];
+        if ( $comment->save() ) {
+            return redirect( '/book/'.$url );
+        }else{
+            return redirect( '/book/'.$url );
+        }
     }
 }

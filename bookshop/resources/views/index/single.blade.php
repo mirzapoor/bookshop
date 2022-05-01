@@ -65,7 +65,8 @@
                                 </div>
                                 <div class="col-8 px-2">
                                     <div class="single-product-add-to-cart ">
-                                        <button type="submit" style="background-color: green ;">افزودن به سبد خرید <i class="fas fa-cart-plus"></i></button>
+                                        <button type="submit" style="background-color: green ;">افزودن به سبد خرید <i
+                                                class="fas fa-cart-plus"></i></button>
                                     </div>
                                 </div>
                             </div>
@@ -264,17 +265,25 @@
                             <br />
 
                         </div>
-                       <div class="tab-pane fade" id="nav-product-review" role="tabpanel"
+                        <div class="tab-pane fade" id="nav-product-review" role="tabpanel"
                             aria-labelledby="nav-product-review-tab">
                             <h4 class="fs-12 m-0 p-0 mb-3">نظرات کاربران</h4>
                             <span class="d-inline-block border px-3 py-2 fs-10">
                                 <i class="bi bi-chat-right"></i>&nbsp;دیدگاه و امتیاز شما چیست ؟
                             </span>
-                            <span class="d-inline-block px-2 py-2 fs-10"> 23 رای</span>
+                            <span class="d-inline-block px-2 py-2 fs-10">
+                                <h3 class="push-down-25"><span class="light">{!! countcomment($record->id) !!}</span> نظر
+                                </h3>
+                            </span>
                             <span class="d-inline-block px-2 py-2 fs-10 border-start"> 4.5 امتیاز</span>
+
                             <div class="review-form">
-                                <form action="">
-                                    <div class="rating-box">
+                                <form id="commentform" method="post" action="<?= Url('/comment') ?>"
+                                    class="form form-inline form-comments">
+
+                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                    <input type="hidden" name="id_books" value="{{ $record->id }}">
+                                    {{-- <div class="rating-box">
                                         <input type="radio" name="rate" id="1" value="1">
                                         <label for="1"></label>
                                         <input type="radio" name="rate" id="2" value="2">
@@ -285,18 +294,28 @@
                                         <label for="4"></label>
                                         <input type="radio" name="rate" id="5" value="5">
                                         <label for="5"></label>
-                                    </div>
+                                    </div> --}}
                                     <div class="row">
                                         <div class="col-sm-6 col-12 pe-sm-0">
                                             <div>
-                                                <input type="text" placeholder="نام شما ...">
-                                                <input type="email" placeholder="ایمیل شما ...">
-                                                <input type="text" placeholder="وب سایت ...">
+                                                <label for="name_comments">نام<span class="red-clr bold">*</span></label>
+                                                <input type="text" aria-required="true" tabindex="1" size="30"
+                                                    id="name_comments" name="name_comments" required>
+
+                                                <label for="lname_comments">نام خانوادگی</label>
+                                                <input type="text" tabindex="2" size="30" id="lname_comments"
+                                                    name="lname_comments">
+
+                                                <label for="email_comments">ایمیل<span
+                                                        class="red-clr bold">*</span></label>
+                                                <input type="email" aria-required="true" tabindex="3" size="30"
+                                                    id="email_comments" name="email_comments" required>
                                             </div>
                                         </div>
                                         <div class="col-sm-6 col-12 ps-sm-2">
                                             <div>
-                                                <textarea name="" placeholder="دیدگاه شما ..."></textarea>
+                                                <textarea class="input-block-level" tabindex="4" rows="7" cols="70" id="content_comments" name="content_comments"
+                                                    placeholder="نظرتان را در اینجا بنویسید ..." required></textarea>
                                                 <div class="text-end">
                                                     <button type="submit">اشتراک دیدگاه</button>
                                                 </div>
@@ -305,82 +324,67 @@
                                     </div>
                                 </form>
                             </div>
-                            <div class="reviews-box border-top border-2 mt-4">
-                                <div class="item border-bottom border-2">
-                                    <div class="parent-item my-3 position-relative">
-                                        <div class="rating-numer position-absolute end-0 top-0 px-2 pt-3 fs-12"><i
-                                                class="bi bi-star text-warning"></i>&nbsp;5</div>
-                                        <div class="meta d-flex align-items-center">
-                                            <div class="me-3">
-                                                <img src="<?= Url('index/image/book-4.png') ?>" alt="">
-                                            </div>
-                                            <div>
-                                                <span class="d-block fs-12 mb-3">امید قدیمی <span
-                                                        class="fs-10 text-success border rounded p-1 ms-3"> خریدار
-                                                        محصول </span></span>
-                                                <span class="d-block fs-10">13:05 | 00.12.20<a href="#"
-                                                        class="text-info border-start ps-3 ms-3"><i
-                                                            class="bi bi-reply display-3"
-                                                            style="font-size: 16px;"></i></a></span>
-                                            </div>
+                            @foreach ($comments as $comment)
+                                <div class="child-item ms-0 ms-md-4 border p-3 mb-3 position-relative">
+                                    <div class="meta d-flex align-items-center">
+                                        <div class="me-3">
+                                            <img src="" alt="">
                                         </div>
-                                        <p class="m-0 mt-3 lh-lg fs-12">لورم ایپسوم متن ساختگی با تولید سادگی
-                                            نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون
-                                            بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی
-                                            تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می
-                                            باشد .</p>
-                                        <div class="footer-dots position-absolute end-0 p-2">
-                                            <span></span>
-                                            <span></span>
-                                            <span></span>
+                                        <div>
+                                            <span class="d-block fs-12 mb-3">{{ $comment->name_comments }}</span>
+                                            <span class="d-block fs-10">14:52 | 00.12.20<a href="#"
+                                                    class="text-info border-start ps-3 ms-3"><i
+                                                        class="bi bi-reply display-3"
+                                                        style="font-size: 16px;"></i></a></span>
                                         </div>
                                     </div>
-                                    <div class="child-item ms-0 ms-md-4 border p-3 mb-3 position-relative">
-                                        <div class="meta d-flex align-items-center">
-                                            <div class="me-3">
-                                                <img src="<?= Url('index/image/book-4.png') ?>" alt="">
-                                            </div>
-                                            <div>
-                                                <span class="d-block fs-12 mb-3">reza</span>
-                                                <span class="d-block fs-10">14:52 | 00.12.20<a href="#"
-                                                        class="text-info border-start ps-3 ms-3"><i
-                                                            class="bi bi-reply display-3"
-                                                            style="font-size: 16px;"></i></a></span>
-                                            </div>
-                                        </div>
-                                        <p class="m-0 mt-3 lh-lg fs-12">لورم ایپسوم متن ساختگی با تولید سادگی
-                                            نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است</p>
-                                    </div>
-                                    <div class="child-item ms-0 ms-md-4 border p-3 mb-3 position-relative">
-                                        <div class="rating-numer position-absolute end-0 top-0 px-2 pt-3 fs-12"><i
-                                                class="bi bi-star text-warning"></i>&nbsp;4</div>
-                                        <div class="meta d-flex align-items-center">
-                                            <div class="me-3">
-                                                <img src="<?= Url('index/image/book-4.png') ?>" alt="">
-                                            </div>
-                                            <div>
-                                                <span class="d-block fs-12 mb-3"> محمد <span
-                                                        class="fs-10 text-success border rounded p-1 ms-3"> خریدار
-                                                        محصول </span></span>
-                                                <span class="d-block fs-10">08:13 | 00.12.24<a href="#"
-                                                        class="text-info border-start ps-3 ms-3"><i
-                                                            class="bi bi-reply display-3"
-                                                            style="font-size: 16px;"></i></a></span>
-                                            </div>
-                                        </div>
-                                        <p class="m-0 mt-3 lh-lg fs-12">لورم ایپسوم متن ساختگی با تولید سادگی
-                                            نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون
-                                            بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است</p>
-                                    </div>
+                                    <p class="m-0 mt-3 lh-lg fs-12"> {{ $comment->content_comments }}
+
+                                    </p>
                                 </div>
-                            </div>
-                        </div> 
-                  
-                   
+                                {{-- @foreach ($recomments as $recomment)
+
+
+                                    <div class="child-item ms-0 ms-md-4 border p-3 mb-3 position-relative">
+                                        <div class="rating-numer position-absolute end-0 top-0 px-2 pt-3 fs-12">
+                                            {{ $recomment->name_comments }}<i class="bi bi-star text-warning"></i>&nbsp;4
+                                        </div>
+                                        <div class="meta d-flex align-items-center">
+                                            <div class="me-3">
+                                                <img src="" alt="">
+                                            </div>
+
+                                        </div>
+                                        <p class="m-0 mt-3 lh-lg fs-12">
+                                            {{ $recomment->content_comments }}
+
+                                        </p>
+                                    </div>
+
+                                    @endforeach --}}
+
+
+                                    <!--  ==========  -->
+                                    <!--  = Single Nested Comment - one level =  -->
+                                    <!--  ==========  -->
+                                @endforeach
+
+                                <br />
+                                <br />
+                                <br />
+                                <br />
+                                <br />
+                                <br />
+                                <br />
+                                <br />
+
+                                <hr />
+                        </div>
+
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
     </section>
 @endsection
@@ -441,6 +445,7 @@ use App\SubjectsModel;
 use App\BooksModel;
 use App\ChaphkonehsModel;
 use App\WritersModel;
+use App\CommentsModel;
 use App\MotarjemsModel;
 use App\PakhshModel;
 
@@ -458,11 +463,11 @@ function getbookstar()
     return $bookstar;
 }
 
-// function replaycomments( $id )
-// {
-//     $recomments = CommentModel::where(['replaye_comments'=>$id,'state'=>1])->get();
-//     return $recomments;
-// }
+function replaycomments($id)
+{
+    $recomments = CommentsModel::where(['replaye_comments' => $id, 'state' => 1])->get();
+    return $recomments;
+}
 
 function namepakhsh($id)
 {
@@ -506,16 +511,16 @@ function lnamemotarjem($id)
     return $name;
 }
 
-// function countcomment( $id )
-// {
-//     $count = CommentModel::where(['id_books'=>$id,'state'=>1])->count();
-//     return $count;
-// }
-// function nameuser( $id )
-// {
-//     $name = User::where('id',$id)->first()['fname'];
-//     return $name;
-// }
+function countcomment($id)
+{
+    $count = CommentsModel::where(['id_books' => $id, 'state' => 1])->count();
+    return $count;
+}
+function nameuser($id)
+{
+    $name = User::where('id', $id)->first()['fname'];
+    return $name;
+}
 
 function namecategory($id)
 {
