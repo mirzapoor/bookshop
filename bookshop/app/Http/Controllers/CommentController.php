@@ -5,9 +5,17 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\CommentsModel;
 use App\Http\Requests;
-
+// use Auth;
 class CommentController extends Controller
 {
+    // public function __construct()
+    // {
+    //     if ( Auth::check() ) {
+    //         $this->middleware('AdminMiddle');
+    //     }else{
+    //         $this->middleware('auth');
+    //     }
+    // }
     /**
      * Display a listing of the resource.
      *

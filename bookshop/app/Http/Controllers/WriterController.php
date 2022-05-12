@@ -6,9 +6,17 @@ use Illuminate\Http\Request;
 use App\Http\Requests\WritersRequest;
 use App\Http\Requests;
 use App\WritersModel;
-
+use Auth;
 class WriterController extends Controller
 {
+    public function __construct()
+    {
+        if ( Auth::check() ) {
+            $this->middleware('AdminMiddle');
+        }else{
+            $this->middleware('auth');
+        }
+    }
     /**
      * Display a listing of the resource.
      *

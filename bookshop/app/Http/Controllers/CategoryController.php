@@ -6,9 +6,20 @@ use Illuminate\Http\Request;
 use  App\SubjectsModel;
 use App\Http\Requests\CategoryRequest;
 use  App\Requests;
+use auth;
 
 class CategoryController extends Controller
 {
+
+    public function __construct()
+    {
+        if ( Auth::check() ) {
+            $this->middleware('AdminMiddle');
+        }else{
+            $this->middleware('auth');
+        }
+    }
+
     /**
      * Display a listing of the resource.
      *

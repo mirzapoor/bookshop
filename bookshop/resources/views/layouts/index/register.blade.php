@@ -27,9 +27,9 @@
             </form>
             <div class="icons">
                 <div id="search-btn" class="fas fa-search"></div>
-                @yield('cart')
-                <div id="login-btn" class="fas fa-user"></div>
+                {{-- <a href="#"><i class="fas fa-heart"></i></a> --}}
 
+                @yield('cart')
             </div>
         </div>
         <nav class="header-2 navbar navbar-expand-md h1">
@@ -69,8 +69,7 @@
         </form>
     </div>
     <!-- home section starts  -->
-    @yield('shop')
-    @yield('numberpage')
+    @yield('register')
     <!-- footer section starts  -->
     <section class="footer">
         <hr>
@@ -91,6 +90,7 @@
                 <a href="#"> <i class="fas fa-arrow-right"></i> محبوب ها </a>
                 <a href="#"> <i class="fas fa-arrow-right"></i> نظرات </a>
             </div>
+
             <div class="box">
                 <h3>لینک</h3>
                 <a href="#"> <i class="fas fa-arrow-right"></i> حساب کاربری </a>
@@ -111,11 +111,11 @@
             <a href="#" class="fab fa-pinterest"></a>
         </div>
     </section>
-    <!-- footer section ends -->
+     <!-- footer section ends -->
 
     <!-- loader  -->
 
-    {{-- <div class="loader-container">
+     {{-- <div class="loader-container">
         <img src="'index/image/loader-img.gif') ?>" alt="">
     </div> --}}
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -131,4 +131,5 @@
     <!-- custom js file link  -->
     <script type="text/javascript" src="<?= Url('index/js/script.js') ?>"></script>
 </body>
+
 </html>

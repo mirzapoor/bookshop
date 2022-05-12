@@ -48,6 +48,8 @@
                 {{-- <a href="#"><i class="fas fa-heart"></i></a> --}}
 
                 @yield('cart')
+                <div id="login-btn" class="fas fa-user"></div>
+
             </div>
         </div>
 
@@ -101,13 +103,8 @@
         </div>
     </div>
     <section class="featured" id="featured">
-        <h1 class="heading"><span>کتابهای ویژه</span></h1>
-
-      
-
+        <h1 class="heading"><span>کتابهای مرتبط</span></h1>
                 @yield('contentbook')
-
-            
     </section>
     <section class="footer">
         <hr>

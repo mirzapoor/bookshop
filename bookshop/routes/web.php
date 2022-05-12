@@ -19,7 +19,6 @@ Route::post('/comment','HomeController@comment');
 
 
 
-Auth::routes();
 
 Route::prefix('admin')->group(function () {
     Route::resource('/pakhsh','PakhshController');
@@ -36,3 +35,14 @@ Route::prefix('admin')->group(function () {
     });
 
  }); 
+
+
+ Route::group(['prefix'=>'user'], function()
+{
+	Route::get('/panel','UserPanelController@index');
+	Route::resource('/ticket','UserPanelTicketController');
+});
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

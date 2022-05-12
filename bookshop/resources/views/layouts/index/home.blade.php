@@ -33,11 +33,25 @@
 
             <div class="icons">
                 <div id="search-btn" class="fas fa-search"></div>
-                {{-- <a href="#"><i class="fas fa-heart"></i></a> --}}
+
                 <a href="#"><i class="fas fa-shopping-cart"></i></a>
 
                 @yield('cart')
-                <div id="login-btn" class="fas fa-user"></div>
+                {{-- @if(Route::has('login'))
+
+                @auth
+                    <a href="{{ url('/') }}"></a>
+                @else --}}
+                 <a href="{{ route('login') }}"><div id="" class="fas fa-user"></div></a>
+                  {{--  @if (Route::has('register'))
+                <a href="{{ route('register') }}"><div  class="fas fa-user-plus"></a>
+                    
+                @endif
+                @endauth
+                @endif --}}
+
+                
+
             </div>
         </div>
 
@@ -47,11 +61,8 @@
             </div>
         </nav>
     </header>
-
     <!-- header section ends -->
-
     <!-- bottom navbar  -->
-
     <nav class="bottom-navbar">
         <a href="#home" class="fas fa-home"></a>
         <a href="#featured" class="fas fa-list"></a>
@@ -59,35 +70,13 @@
         <a href="#reviews" class="fas fa-comments"></a>
         <a href="#blogs" class="fas fa-blog"></a>
     </nav>
-
-
-
-
     <!-- login form  -->
-
     <div class="login-form-container">
         <div id="close-login-btn" class="fas fa-times"></div>
 
-        <form action="">
-            <h3>ورود</h3>
-            <span class="text-right">نام کاربری</span>
-            <input type="email" name="" class="box" placeholder="ایمیل خود را وارد کنید" id="" />
-            <span class="text-right">رمز عبور</span>
-            <input type="password" name="" class="box" placeholder="رمز عبور خود را وارد کنید" id="" />
-            <div class="checkbox">
-                <input type="checkbox" name="" id="remember-me" />
-                <label for="remember-me"> به خاطر سپردن</label>
-            </div>
-            <button type="submit" href="<?= Url('/login') ;?>" class="btn">ورود</button>
-            <p class="text-center"><a href="#"> رمز خود را فراموش کرده اید ؟ </a></p>
-            <p class="text-right text-dark">عضو جدید:
-            </p>
-            <button href="<?= Url('/register') ?>" class="btn btn-success">ساخت حساب</button>
-        </form>
+        @yield('login')
     </div>
-
     <!-- home section starts  -->
-
     <section class="home " id="home">
         <div class="row">
             <div class="content">
@@ -104,8 +93,6 @@
             </div>
         </div>
     </section>
-
-
     <section class="icons-container">
         <div class="container">
             <div class="row text-center">
@@ -116,7 +103,6 @@
                         <p class="text-muted">سفارش بالای 100 هزار تومان</p>
                     </div>
                 </div>
-
                 <div class="col-md-3 mb-5">
                     <i class="fas fa-lock fa-10x text-success"></i>
                     <div class="content mt-5">
@@ -124,7 +110,6 @@
                         <p class="text-muted">100 پرداخت مطمئن</p>
                     </div>
                 </div>
-
                 <div class="col-md-3 mb-5">
                     <i class="fas fa-redo-alt fa-10x text-success"></i>
                     <div class="content mt-5">
@@ -132,7 +117,6 @@
                         <p class="text-muted">10 روز مهلت بازگشت</p>
                     </div>
                 </div>
-
                 <div class="col-md-3 mb-5">
                     <i class="fas fa-headset fa-10x text-success"></i>
                     <div class="content mt-5">
@@ -143,30 +127,20 @@
             </div>
         </div>
     </section>
-
     <!-- icons section ends -->
-
     <!-- featured section starts  -->
-
     <section class="featured" id="featured">
         <h1 class="heading"><span>کتابهای ویژه</span></h1>
-
         <div class="swiper featured-slider">
             <div class="swiper-wrapper">
-
                 @yield('contentstar')
-
             </div>
             <div class="swiper-button-next"></div>
             <div class="swiper-button-prev"></div>
         </div>
-
     </section>
-
     <!-- featured section ends -->
-
     <!-- newsletter section starts -->
-
     <section class="newsletter">
         <form action="">
             <h3>اگر هنوز به جمع ما نیومدی بهتر همین الان به فکر بشی</h3>
@@ -174,26 +148,18 @@
             <input type="submit" value="عضویت" class="btn" />
         </form>
     </section>
-
     <!-- newsletter section ends -->
-
     <!-- arrivals section starts  -->
-
     <section class="arrivals" id="arrivals">
         <h1 class="heading"><span>کتابهای جدید</span></h1>
         <div class="swiper arrivals-slider">
             @yield('newcontent1')
-
         </div>
         <div class="swiper arrivals-slider">
             @yield('newcontent2')
-
-
         </div>
     </section>
-
     <!-- arrivals section ends -->
-
     <!-- deal section starts  -->
 
     <section class="deal">

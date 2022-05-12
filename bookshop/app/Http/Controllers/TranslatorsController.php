@@ -5,8 +5,17 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\TranslatorsRequest;
 use App\MotarjemsModel;
+use Auth;
 class TranslatorsController extends Controller
 {
+    public function __construct()
+    {
+        if ( Auth::check() ) {
+            $this->middleware('AdminMiddle');
+        }else{
+            $this->middleware('auth');
+        }
+    }
     /**
      * Display a listing of the resource.
      *

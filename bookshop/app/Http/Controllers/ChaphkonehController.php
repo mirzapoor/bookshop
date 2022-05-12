@@ -6,9 +6,19 @@ use Illuminate\Http\Request;
 use App\Http\Requests\ChaphkonehsRequest;
 use App\ChaphkonehsModel;
 use  App\Requests;
+use Auth;
 
 class ChaphkonehController extends Controller
 {
+
+    public function __construct()
+    {
+        if ( Auth::check() ) {
+            $this->middleware('AdminMiddle');
+        }else{
+            $this->middleware('auth');
+        }
+    }
     /**
      * Display a listing of the resource.
      *

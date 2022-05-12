@@ -34,21 +34,25 @@
         <li class="nav-item">
             <a class="nav-link h2 ml-5 text-white" href="#">تماس با ما</a>
         </li>
+        
     </ul>
 @endsection
 
 @section('cart')
-<?php
-$count = sizeof([Session::get('cart')]); ?>
-<a href="/cart" class="cart-btn nav-icon "><i class="fas fa-cart-plus">
-        <div class="cart-items">{{ $count }}</div> </i></a>
+    <?php
+    $count = sizeof([Session::get('cart')]); ?>
+    <a href="/cart" class="cart-btn nav-icon "><i class="fas fa-cart-plus">
+            <div class="cart-items">{{ $count }}</div>
+        </i></a>
     @include('index.cart')
-@endsection 
+@endsection
+
+
 {{-- slideshow --}}
 @section('slideshow')
     @foreach (getbookstar() as $bookstar)
-        <a href="<?= Url('book/' . $bookstar->url_book) ?>" class="swiper-slide mr-5 ml-4"><img src="<?= Url('assets/img/imagebook/' . $bookstar->img_book) ?>"
-                alt="" /></a>
+        <a href="<?= Url('book/' . $bookstar->url_book) ?>" class="swiper-slide mr-5 ml-4"><img
+                src="<?= Url('assets/img/imagebook/' . $bookstar->img_book) ?>" alt="" /></a>
     @endforeach
 @endsection
 
@@ -62,9 +66,10 @@ $count = sizeof([Session::get('cart')]); ?>
                 <a href="#" class="fas fa-eye"></a>
             </div>
             <div class="image">
-               <a href="<?= Url('book/' . $bookstar->url_book) ?>"> <img src=" <?= Url('assets/img/imagebook/' . $bookstar->img_book) ?>" alt="{{ $bookstar->name_book }}"
-                title="{{ $bookstar->name_book }}" /></a> 
-              
+                <a href="<?= Url('book/' . $bookstar->url_book) ?>"> <img
+                        src=" <?= Url('assets/img/imagebook/' . $bookstar->img_book) ?>" alt="{{ $bookstar->name_book }}"
+                        title="{{ $bookstar->name_book }}" /></a>
+
             </div>
             <div class="content">
                 <h4>{{ $bookstar->name_book }}</h4>
@@ -150,9 +155,10 @@ $count = sizeof([Session::get('cart')]); ?>
                 <a href="#" class="fas fa-eye"></a>
             </div>
             <div class="image">
-               <a href="<?= Url('book/' . $favorit->url_book) ?>"><img src=" <?= Url('assets/img/imagebook/' . $favorit->img_book) ?>" alt="{{ $favorit->name_book }}"
-                title="{{ $favorit->name_book }}" /></a> 
-               
+                <a href="<?= Url('book/' . $favorit->url_book) ?>"><img
+                        src=" <?= Url('assets/img/imagebook/' . $favorit->img_book) ?>" alt="{{ $favorit->name_book }}"
+                        title="{{ $favorit->name_book }}" /></a>
+
             </div>
             <div class="content">
                 <h4>{{ $favorit->name_book }}</h4>

@@ -1,20 +1,21 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
-use App\Http\Requests\PakhshRequest;
-use App\PakhshModel;
+namespace App\Http\Controllers;
 use Auth;
-class PakhshController extends Controller
+use App\Http\Requests;
+class UserPanelController extends Controller
 {
+
     public function __construct()
     {
         if ( Auth::check() ) {
-            $this->middleware('AdminMiddle');
+            $this->middleware('UserMiddle');
         }else{
             $this->middleware('auth');
         }
+        
     }
     /**
      * Display a listing of the resource.
@@ -23,9 +24,7 @@ class PakhshController extends Controller
      */
     public function index()
     {
-        $pakhsh=PakhshModel::orderby('id','desc')->paginate(6);
-        //
-        return view('admin.pakhsh.index',['pakhsh'=>$pakhsh]);
+        return View('users.index');
     }
 
     /**
@@ -36,7 +35,6 @@ class PakhshController extends Controller
     public function create()
     {
         //
-        return view('admin.pakhsh.create');
     }
 
     /**
@@ -45,15 +43,9 @@ class PakhshController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(PakhshRequest $request)
+    public function store(Request $request)
     {
-        $pakhsh = new PakhshModel($request->all());
-        if ($pakhsh->save()){
-            return redirect('admin/pakhsh');
-        }
-        else{
-            return redirect()->back();
-        }
+        //
     }
 
     /**
@@ -75,8 +67,6 @@ class PakhshController extends Controller
      */
     public function edit($id)
     {
-        $record =PakhshModel::find($id);
-        return view('admin.pakhsh.edit',['record' =>$record]);
         //
     }
 
@@ -87,16 +77,9 @@ class PakhshController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(PakhshRequest $request, $id)
+    public function update(Request $request, $id)
     {
         //
-        $edit=PakhshModel::find($id);
-        if($edit->update($request->all())){
-            return redirect('admin/pakhsh');
-        }
-        else{
-
-        }
     }
 
     /**
@@ -107,9 +90,6 @@ class PakhshController extends Controller
      */
     public function destroy($id)
     {
-        // 
-     
-        $delete =PakhshModel::find($id)->delete();
-        return redirect('admin/pakhsh');
+        //
     }
 }

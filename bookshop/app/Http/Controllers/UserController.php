@@ -4,10 +4,21 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use Auth;
+
 
 use App\Http\Requests\UserRequest;
 class UserController extends Controller
 {
+
+    public function __construct()
+    {
+        if ( Auth::check() ) {
+            $this->middleware('AdminMiddle');
+        }else{
+            $this->middleware('auth');
+        }
+    }
     /**
      * Display a listing of the resource.
      *

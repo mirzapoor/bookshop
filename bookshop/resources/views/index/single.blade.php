@@ -1,6 +1,9 @@
 @extends('layouts.index.single')
 @section('head')
     <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <link rel="stylesheet" href="<?= Url('index/css/main.css') ?>">
+    <link rel="stylesheet" href="<?= Url('index/css/style_cart.css') ?>">
 @endsection
 
 @section('menunavbar')
@@ -434,8 +437,8 @@
         }
     </script>
     <script src="<?= Url('index/js/app.js') ?>"></script>
-    <script src="<?= Url('index/js/scripts.js') ?>"></script>
     <script src="<?= Url('index/js/index.js') ?>"></script>
+    <script src="<?= Url('index/js/scripts.js') ?>"></script>
 
     <script src="<?= Url('index/js/script_shop.js') ?>"></script>
 @endsection

@@ -14,9 +14,20 @@ use App\BookMotarjemModel;
 use App\PakhshBooksModel;
 use App\CountPrintsModel;
 use App\Http\Requests;
+use Auth;
 
 class BookController extends Controller
 {
+
+    public function __construct()
+    {
+        if ( Auth::check() ) {
+            $this->middleware('AdminMiddle');
+        }else{
+            $this->middleware('auth');
+        }
+        
+    }
     /**
      * Display a listing of the resource.
      *
@@ -75,7 +86,8 @@ class BookController extends Controller
     {
         //
         $book = new BooksModel($request->all());
-        $book->id_users=1;
+        $book->id_users = Auth::user()->id;
+
         $book->view_book =0;
         $title = str_replace('-','',$request->name_book);
         $book->url_book = preg_replace('/\s+/','-',$title);
@@ -164,7 +176,6 @@ class BookController extends Controller
         'writers'=>$writers,
         'motarjems'=>$motarjems,
         'pakhsh'=>$pakhsh,
-
         'state'=>$state
     ]);
 
@@ -183,7 +194,6 @@ class BookController extends Controller
         $book =  BooksModel::find($id);
         $title = str_replace('-','',$request->name_book);
         $book->url_book = preg_replace('/\s+/','-',$title);
-
         if ($request->hasfile('imgbook')){
             $FileName =time().'.'.$request->file('imgbook')->getClientOriginalExtension();
             if($request->file('imgbook')->move('assets/img/imagebook',$FileName)){
@@ -197,7 +207,6 @@ class BookController extends Controller
                     $moalefbook =MoalefBooksModel::create(['id_books'=>$book->id,'id_moalef'=>$value]);
                 } 
             }
-            
             if($request->has('motarjem')){
                 $delete2 = BookMotarjemModel::where('id_book',$id)->delete();
                 foreach($request->get('motarjem') as $key=>$value){
@@ -213,7 +222,6 @@ class BookController extends Controller
                     'id_pakhsh'=>$value]);
                 } 
             }
-            
         return redirect('admin/books');
         }
     }
