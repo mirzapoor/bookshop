@@ -2,7 +2,7 @@
 @section('content')
     <div id="content">
         <div class="inner" style="min-height:700px;">
-            <div class='class-lg-12'>
+            <div class='col-lg-12'>
                 <div class="row">
                     <h1>نمایش و مدیریت کتاب ها سایت <a href="<?= Url('admin/books/create') ?>"
                             class="btn btn-primary btn-sm btn-line"> افزودن کتاب جدید</a> </h1>

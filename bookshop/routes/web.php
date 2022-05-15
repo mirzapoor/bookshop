@@ -21,6 +21,9 @@ Route::post('/comment','HomeController@comment');
 
 
 Route::prefix('admin')->group(function () {
+    Route::resource('/ticket','TicketController');
+    Route::post('/ticket/ansewer','TicketController@ansewer');
+	Route::get('/ticket/ansewer/{id}','TicketController@ansewerget');
     Route::resource('/pakhsh','PakhshController');
     Route::resource('/writer','WriterController');
     Route::resource('/translator','TranslatorsController');

@@ -24,7 +24,7 @@
 
     <header class="header">
         <div class="header-1">
-            <a href="#" class="logo"> <i class="fas fa-book"></i> کتابخانه </a>
+            <a href="/shop" class="logo"> <i class="fas fa-book"></i> کتابخانه </a>
 
             <form action="" class="search-form">
                 <input type="search" name="" placeholder="جستجو کنید" id="search-box" />
@@ -33,25 +33,11 @@
 
             <div class="icons">
                 <div id="search-btn" class="fas fa-search"></div>
-
+                {{-- <a href="#"><i class="fas fa-heart"></i></a> --}}
                 <a href="#"><i class="fas fa-shopping-cart"></i></a>
 
                 @yield('cart')
-                {{-- @if(Route::has('login'))
-
-                @auth
-                    <a href="{{ url('/') }}"></a>
-                @else --}}
-                 <a href="{{ route('login') }}"><div id="" class="fas fa-user"></div></a>
-                  {{--  @if (Route::has('register'))
-                <a href="{{ route('register') }}"><div  class="fas fa-user-plus"></a>
-                    
-                @endif
-                @endauth
-                @endif --}}
-
-                
-
+                <div id="login-btn" class="fas fa-user"><a href="{{ route('login') }}"></a></div>
             </div>
         </div>
 
@@ -61,8 +47,11 @@
             </div>
         </nav>
     </header>
+
     <!-- header section ends -->
+
     <!-- bottom navbar  -->
+
     <nav class="bottom-navbar">
         <a href="#home" class="fas fa-home"></a>
         <a href="#featured" class="fas fa-list"></a>
@@ -70,19 +59,71 @@
         <a href="#reviews" class="fas fa-comments"></a>
         <a href="#blogs" class="fas fa-blog"></a>
     </nav>
+
+
+
+
     <!-- login form  -->
+
     <div class="login-form-container">
         <div id="close-login-btn" class="fas fa-times"></div>
 
-        @yield('login')
+        <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
+            <h3>ورود</h3>
+            {{ csrf_field() }}
+
+            <span class="text-right">نام کاربری</span>
+            <div>
+                <input id="email" type="email" class="form-control box mt-4 " name="email"
+                    value="{{ old('email') }}" placeholder="ایمیل خود را وارد کنید" />
+                @if ($errors->has('email'))
+                    <span class="help-block">
+                        <strong>{{ $errors->first('email') }}</strong>
+                    </span>
+                @endif
+            </div>          
+            <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                <span for="password" class="col-md-4 control-label text-right h4 ">رمز عبور</span>
+
+                <div>
+                    <input id="password" type="password" class="form-control box mt-4 " name="password"
+                        placeholder="رمز عبور خود را وارد کنید">
+
+                    @if ($errors->has('password'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('password') }}</strong>
+                        </span>
+                    @endif
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-6 col-md-offset-4">
+                    <div class="checkbox">
+                        <label type="checkbox" for="remember-me">
+                            <input type="checkbox" name="remember" id="remember-me"> مرا به خاطر
+                            بسپار
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+           
+            <a type="submit" href="<?= Url('/') ;?>" class="btn">ورود</a>
+            <p class="text-center"><a href="{{ url('/password/reset') }}"> رمز خود را فراموش کرده اید ؟ </a></p>
+            <p class="text-right text-dark">عضو جدید:
+            </p>
+            <a href="{{ url('/register') }}" class="btn btn-success">ساخت حساب</a>
+        </form>
     </div>
+
     <!-- home section starts  -->
+
     <section class="home " id="home">
         <div class="row">
             <div class="content">
                 <h3>تا 50٪ تخفیف</h3>
                 <p>در 1401 کتاب خوندان خودمون به چالش بکشیم!</p>
-                <a href="#" class="btn">اکنون خرید کنید</a>
+                <a href="<?= Url('/shop');?>" class="btn">اکنون خرید کنید</a>
             </div>
             <div class="swiper books-slider">
 
@@ -93,6 +134,8 @@
             </div>
         </div>
     </section>
+
+
     <section class="icons-container">
         <div class="container">
             <div class="row text-center">
@@ -103,6 +146,7 @@
                         <p class="text-muted">سفارش بالای 100 هزار تومان</p>
                     </div>
                 </div>
+
                 <div class="col-md-3 mb-5">
                     <i class="fas fa-lock fa-10x text-success"></i>
                     <div class="content mt-5">
@@ -110,6 +154,7 @@
                         <p class="text-muted">100 پرداخت مطمئن</p>
                     </div>
                 </div>
+
                 <div class="col-md-3 mb-5">
                     <i class="fas fa-redo-alt fa-10x text-success"></i>
                     <div class="content mt-5">
@@ -117,6 +162,7 @@
                         <p class="text-muted">10 روز مهلت بازگشت</p>
                     </div>
                 </div>
+
                 <div class="col-md-3 mb-5">
                     <i class="fas fa-headset fa-10x text-success"></i>
                     <div class="content mt-5">
@@ -127,39 +173,57 @@
             </div>
         </div>
     </section>
+
     <!-- icons section ends -->
+
     <!-- featured section starts  -->
+
     <section class="featured" id="featured">
         <h1 class="heading"><span>کتابهای ویژه</span></h1>
+
         <div class="swiper featured-slider">
             <div class="swiper-wrapper">
+
                 @yield('contentstar')
+
             </div>
             <div class="swiper-button-next"></div>
             <div class="swiper-button-prev"></div>
         </div>
+
     </section>
+
     <!-- featured section ends -->
+
     <!-- newsletter section starts -->
+
     <section class="newsletter">
         <form action="">
             <h3>اگر هنوز به جمع ما نیومدی بهتر همین الان به فکر بشی</h3>
             <input type="email" name="" placeholder="ایمیل خود را وارد کنید" id="" class="box" />
-            <input type="submit" value="عضویت" class="btn" />
+            <a type="submit"  class="btn" href="<?= Url('/register');?>" >عضویت</a>
         </form>
     </section>
+
     <!-- newsletter section ends -->
+
     <!-- arrivals section starts  -->
+
     <section class="arrivals" id="arrivals">
         <h1 class="heading"><span>کتابهای جدید</span></h1>
         <div class="swiper arrivals-slider">
             @yield('newcontent1')
+
         </div>
         <div class="swiper arrivals-slider">
             @yield('newcontent2')
+
+
         </div>
     </section>
+
     <!-- arrivals section ends -->
+
     <!-- deal section starts  -->
 
     <section class="deal">
@@ -171,7 +235,7 @@
                 از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و
                 سطرآنچنان که لازم است
             </p>
-            <a href="#" class="btn">اکنون خرید کنید</a>
+            <a href="<?= url('/shop');?>" class="btn">اکنون خرید کنید</a>
         </div>
 
         <div class="image">

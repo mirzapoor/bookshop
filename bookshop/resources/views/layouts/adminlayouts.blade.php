@@ -1,3 +1,6 @@
+<?php
+use App\Http\Controller\Auth\AuthController;
+?>
 <!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
@@ -49,154 +52,57 @@
                 <!-- LOGO SECTION -->
                 <header class="navbar-header">
                     <a href="index.html" class="navbar-brand">
-                    </a>
+                        {{-- <img src="" alt="" height="30" />
+                        <h1 class="site-title">ایران نهاد</h1> --}}
+                        
                 </header>
                 <!-- END LOGO SECTION -->
                 <ul class="nav navbar-top-links navbar-left">
                     <!-- MESSAGES SECTION -->
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                            <span class="label label-success">2</span> <i class="icon-envelope-alt"></i>&nbsp;
-                            <i class="icon-chevron-down"></i>
-                        </a>
-                        <ul class="dropdown-menu dropdown-messages">
-                            <li>
-                                <a href="#">
-                                    <div>
-                                        <strong>محمدرضا</strong>
-                                        <span class="pull-left text-muted">
-                                            <em>امروز</em>
-                                        </span>
-                                    </div>
-                                    <div>متن پیغام برای تست پیغام تستی
-                                        <br />
-                                        <span class="label label-primary">مهم</span>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="divider"></li>
-                            <li>
-                                <a href="#">
-                                    <div>
-                                        <strong>علیرضا</strong>
-                                        <span class="pull-left text-muted">
-                                            <em>دیروز</em>
-                                        </span>
-                                    </div>
-                                    <div>متن پیغام برای تست پیغام تستی
-                                        <br />
-                                        <span class="label label-success"> متوسط </span>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="divider"></li>
-                            <li>
-                                <a href="#">
-                                    <div>
-                                        <strong>مهدی</strong>
-                                        <span class="pull-left text-muted">
-                                            <em>31 خرداد 93</em>
-                                        </span>
-                                    </div>
-                                    <div>متن پیغام برای تست پیغام تستی تست تست پیغام
-                                        <br />
-                                        <span class="label label-danger"> کم </span>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="divider"></li>
-                            <li>
-                                <a class="text-center" href="#">
-                                    <i class="icon-angle-left"></i>
-                                    <strong>خواندن همه پیغام ها</strong>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
+                  
                     <!--END MESSAGES SECTION -->
                     <!--TASK SECTION -->
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                            <span class="label label-danger">5</span> <i class="icon-tasks"></i>&nbsp; <i
+                            @if( countmessage() == '0' )
+                            @else
+                            <span class="label label-success">{!! countmessage() !!}</span>  
+                            @endif
+                            <i class="icon-tasks"></i>&nbsp; <i
                                 class="icon-chevron-down"></i>
                         </a>
                         <ul class="dropdown-menu dropdown-tasks">
+                            @foreach( getMessages() as $message )
+
                             <li>
-                                <a href="#">
+                                <a href="<?= Url('admin/ticket/ansewer/'.$message->id); ?>">
                                     <div>
-                                        <p>
-                                            <strong> پروفایل </strong>
-                                            <span class="pull-left text-muted">40% تکمیل شده</span>
-                                        </p>
-                                        <div class="progress progress-striped active">
-                                            <div class="progress-bar progress-bar-success" role="progressbar"
-                                                aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"
-                                                style="width: 40%">
-                                                <span class="sr-only">40% تکمیل شده</span>
-                                            </div>
+                                        
+                                            <strong> {{ $message->fname }} </strong>
+                                            <span class="pull-left text-muted"></span>
                                         </div>
-                                    </div>
+                                        <div>{!! countText( $message->content ) !!}
+                                            <br />
+                                            @if( $message->olaviyat == '3' )
+                                            <span class="label label-primary"> اولویت زیاد</span> 
+                                            @elseif( $message->olaviyat == '2' )
+                                            <span class="label label-success">  اولویت متوسط</span>
+                                            @elseif( $message->olaviyat == '1' )
+                                            <span class="label label-danger">  اولویت کم</span>
+                                            @endif
+                                        </div>
+                                      
                                 </a>
                             </li>
                             <li class="divider"></li>
+                            @endforeach
+
+                           
+                            
                             <li>
-                                <a href="#">
-                                    <div>
-                                        <p>
-                                            <strong> وظایف </strong>
-                                            <span class="pull-left text-muted">20% تکمیل شده</span>
-                                        </p>
-                                        <div class="progress progress-striped active">
-                                            <div class="progress-bar progress-bar-info" role="progressbar"
-                                                aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"
-                                                style="width: 20%">
-                                                <span class="sr-only">20% تکمیل شده</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="divider"></li>
-                            <li>
-                                <a href="#">
-                                    <div>
-                                        <p>
-                                            <strong> پیشرفت کار </strong>
-                                            <span class="pull-left text-muted">60% پیشرفت</span>
-                                        </p>
-                                        <div class="progress progress-striped active">
-                                            <div class="progress-bar progress-bar-warning" role="progressbar"
-                                                aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"
-                                                style="width: 60%">
-                                                <span class="sr-only">60% پیشرفت</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="divider"></li>
-                            <li>
-                                <a href="#">
-                                    <div>
-                                        <p>
-                                            <strong> خلاصه </strong>
-                                            <span class="pull-left text-muted">80% تکمیل شده</span>
-                                        </p>
-                                        <div class="progress progress-striped active">
-                                            <div class="progress-bar progress-bar-danger" role="progressbar"
-                                                aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"
-                                                style="width:80%">
-                                                <span class="sr-only">80% تکمیل شده </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="divider"></li>
-                            <li>
-                                <a class="text-center" href="#">
+                                <a class="text-center" href="<?= Url('admin/ticket'); ?>">
                                     <i class="icon-angle-left"></i>
-                                    <strong>مشاهده همه تسک ها</strong>
+                                    <strong>خواندن همه تیکت ها</strong>
                                 </a>
                             </li>
                         </ul>
@@ -205,61 +111,33 @@
                     <!--ALERTS SECTION -->
                     <li class="chat-panel dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                            <span class="label label-info">8</span> <i class="icon-comments"></i>&nbsp; <i
+                            @if( countcomment() == '0' )
+                            @else
+                            <span class="label label-info">{!! countcomment() !!}</span> 
+                            @endif
+                            <i class="icon-comments"></i>&nbsp; <i
                                 class="icon-chevron-down"></i>
                         </a>
                         <ul class="dropdown-menu dropdown-alerts">
+                            @foreach( getComment() as $comment )
+
                             <li>
-                                <a href="#">
+                                <a href="<?= Url('admin/comments/'.$comment->id.'/edit'); ?>">
                                     <div>
-                                        <span class="pull-left text-muted small"> 4 دقیقه پیش</span>
-                                        <i class="icon-comment"></i> کامنت جدید
+                                        <span class="pull-left text-muted small"> {{ $comment->name_comments }}</span>
+                                        <i class="icon-comment"></i>{!! countText( $comment->content_comments ) !!}
                                     </div>
                                 </a>
                             </li>
                             <li class="divider"></li>
+                            @endforeach
                             <li>
-                                <a href="#">
-                                    <div>
-                                        <span class="pull-left text-muted small">9 دقیقه پیش</span>
-                                        <i class="icon-twitter info"></i> 3 دنبال کننده جدید
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="divider"></li>
-                            <li>
-                                <a href="#">
-                                    <div>
-                                        <span class="pull-left text-muted small"> 20 دقیقه پیش</span>
-                                        <i class="icon-envelope"></i> ارسال پیغام
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="divider"></li>
-                            <li>
-                                <a href="#">
-                                    <div>
-                                        <span class="pull-left text-muted small"> 1 ساعت پیش</span>
-                                        <i class="icon-tasks"></i> وظایف جدید
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="divider"></li>
-                            <li>
-                                <a href="#">
-                                    <div>
-                                        <span class="pull-left text-muted small"> 2 ساعت پیش</span>
-                                        <i class="icon-upload"></i> ورود به سایت
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="divider"></li>
-                            <li>
-                                <a class="text-center" href="#">
+                                <a class="text-center" href="<?= Url('admin/comments'); ?>">
                                     <i class="icon-angle-left"></i>
-                                    <strong>مشاهده همه اعلان ها</strong>
+                                    <strong>مشاهده همه دیدگاه ها</strong>
                                 </a>
                             </li>
+                            
                         </ul>
                     </li>
                     <!-- END ALERTS SECTION -->
@@ -274,7 +152,7 @@
                             <li><a href="#"><i class="icon-gear"></i> تنظیمات </a>
                             </li>
                             <li class="divider"></li>
-                            <li><a href="login.html"><i class="icon-signout"></i> خروج </a>
+                            <li><a href="<?= Url('/logout'); ?>"><i class="icon-signout"></i> خروج </a>
                             </li>
                         </ul>
                     </li>
@@ -285,23 +163,23 @@
         <!-- END HEADER SECTION -->
         <!-- MENU SECTION -->
         <div id="right">
-            {{-- <div class="media user-media well-small">
+            <div class="media user-media well-small">
                 <a class="user-link" href="#">
-                    <img class="media-object img-thumbnail user-img" alt="User Picture"
-                        src="assets/img/user.gif" />
+                    <img class="media-object img-thumbnail user-img" alt="User Picture" src="<?= Url('assets/imageusers/'.Auth::user()->img); ?>" />
                 </a>
                 <br />
                 <div class="media-body">
-                    <h5 class="media-heading"> محمدرضا</h5>
+                    <h5 class="media-heading"> 
+                    <?php
+                        echo Auth::user()->fname;
+                    ?>
+                    </h5>
                     <ul class="list-unstyled user-info">
-                        <li>
-                            <a class="btn btn-success btn-xs btn-circle" style="width: 10px;height: 12px;"></a>
-                            آنلاین
-                        </li>
+                       
                     </ul>
                 </div>
                 <br />
-            </div> --}}
+            </div>
             <ul id="menu" class="collapse">
                 <li class="panel active">
                     <a href="<?= url('admin/index') ?>">
@@ -312,13 +190,15 @@
                     <a href="#" data-parent="#menu" data-toggle="collapse" class="accordion-toggle"
                         data-target="#component-nav">
                         <i class="icon-tasks"> </i> مدیریت کتاب های سایت
-                      
+
                     </a>
                     <ul class="collapse" id="component-nav">
-                        <li class=""><a href="<?= url('admin/books/create') ;?>"><i class="icon-angle-left"></i> ایجاد
+                        <li class=""><a href="<?= url('admin/books/create') ?>"><i
+                                    class="icon-angle-left"></i> ایجاد
                                 کتاب
                                 جدید </a></li>
-                        <li class="active"><a href="<?= url('admin/books'); ?>"><i class="icon-angle-left"></i> نمایش و
+                        <li class="active"><a href="<?= url('admin/books') ?>"><i class="icon-angle-left"></i>
+                                نمایش و
                                 مدیریت
                                 کتب </a></li>
                     </ul>
@@ -350,10 +230,10 @@
                         </span>
                     </a>
                     <ul class="collapse" id="pagesr-nav">
-                        <li><a href="<?= Url('admin/writer/create') ;?>"><i class="icon-angle-left"></i> ایجاد نویسنده
+                        <li><a href="<?= Url('admin/writer/create') ?>"><i class="icon-angle-left"></i> ایجاد نویسنده
                                 جدید </a>
                         </li>
-                        <li><a href="<?= Url('admin/writer') ;?>"><i class="icon-angle-left"></i>نمایش و مدیریت
+                        <li><a href="<?= Url('admin/writer') ?>"><i class="icon-angle-left"></i>نمایش و مدیریت
                                 نویسندگان
                             </a>
                         </li>
@@ -368,9 +248,9 @@
                         </span>
                     </a>
                     <ul class="collapse" id="chart-nav">
-                        <li><a href="<?= Url('admin/translator/create'); ?>"><i class="icon-angle-left"></i> ثبت مترجم
+                        <li><a href="<?= Url('admin/translator/create') ?>"><i class="icon-angle-left"></i> ثبت مترجم
                                 جدید </a></li>
-                        <li><a href="<?= Url('admin/translator'); ?>"><i class="icon-angle-left"></i> نمایش و مدیریت
+                        <li><a href="<?= Url('admin/translator') ?>"><i class="icon-angle-left"></i> نمایش و مدیریت
                                 مترجمین</a></li>
                     </ul>
                 </li>
@@ -383,11 +263,11 @@
                         </span>
                     </a>
                     <ul class="collapse" id="DDL-nav">
-                        <a href="<?= Url('admin/chaphkoneh/create'); ?>"><i class="icon-angle-left"></i> ثبت چاپخانه
+                        <a href="<?= Url('admin/chaphkoneh/create') ?>"><i class="icon-angle-left"></i> ثبت چاپخانه
                             جدید </a>
                 </li>
                 <li>
-                    <a href="<?= Url('admin/chaphkoneh'); ?>"><i class="icon-angle-left"></i> نمایش و مدیریت چاپخانه ها
+                    <a href="<?= Url('admin/chaphkoneh') ?>"><i class="icon-angle-left"></i> نمایش و مدیریت چاپخانه ها
                     </a>
                 </li>
             </ul>
@@ -402,13 +282,13 @@
                 </a>
                 <ul class="collapse" id="DDL4-nav">
                     <li>
-                        <a href="<?= Url('admin/category/create'); ?>" data-parent="DDL4-nav" data-toggle="collapse"
+                        <a href="<?= Url('admin/category/create') ?>" data-parent="DDL4-nav" data-toggle="collapse"
                             class="accordion-toggle" data-target="#DDL4_1-nav">
                             <i class="icon-angle-left"></i> ثبت موضوع جدید
                             <span class="pull-left" style="margin-left: 20px;">
                             </span>
                         </a>
-                        <a href="<?= Url('admin/category'); ?>" data-parent="DDL4-nav" data-toggle="collapse"
+                        <a href="<?= Url('admin/category') ?>" data-parent="DDL4-nav" data-toggle="collapse"
                             class="accordion-toggle" data-target="#DDL4_1-nav">
                             <i class="icon-angle-left"></i> نمایش موضوعات و مدیریت آنها
                             <span class="pull-left" style="margin-left: 20px;">
@@ -427,19 +307,27 @@
                     &nbsp; <span class="label label-warning">5</span>&nbsp;
                 </a>
                 <ul class="collapse" id="error-nav">
-                    <li><a href="<?= Url('admin/users/create'); ?>"><i class="icon-angle-left"></i>ثبت کاربر جدید</a>
+                    <li><a href="<?= Url('admin/users/create') ?>"><i class="icon-angle-left"></i>ثبت کاربر جدید</a>
                     </li>
-                    <li><a href="<?= Url('admin/users') ;?>"><i class="icon-angle-left"></i> نمایش و مدیریت کاربران</a>
+                    <li><a href="<?= Url('admin/users') ?>"><i class="icon-angle-left"></i> نمایش و مدیریت کاربران</a>
                     </li>
                 </ul>
             </li>
-            <li><a href="<?= Url('admin/comments'); ?>"><i class="icon-table"></i> دیدگاه ها 
-                &nbsp;
-              {{-- @if( countcomment() == 0 )
-              @else
-              <span class="label label-danger">{{ countcomment() }}</span>&nbsp; 
-              @endif --}}
-      </a></li>            <li class="panel">
+            <li><a href="<?= Url('admin/comments') ?>"><i class="icon-table"></i> دیدگاه ها
+                    &nbsp;
+                    @if (countcomment() == 0)
+                    @else
+                        <span class="label label-danger">{{ countcomment() }}</span>&nbsp;
+                    @endif
+                </a></li>
+            <li><a href="<?= Url('admin/ticket') ?>"><i class="icon-table"></i> تیکت ها
+                    &nbsp;
+                    @if (countmessage() == 0)
+                    @else
+                        <span class="label label-success">{!! countmessage() !!}</span>&nbsp;
+                    @endif
+                </a></li>
+            <li class="panel">
                 <a href="#" data-parent="#menu" data-toggle="collapse" class="accordion-toggle"
                     data-target="#blank-nav">
                     <i class="icon-check-empty"></i> مدیریت سفارشات
@@ -453,7 +341,7 @@
                     <li><a href="blank2.html"><i class="icon-angle-left"></i> صفحه خالی دوم </a></li>
                 </ul>
             </li>
-            <li><a href="login.html"><i class="icon-signin"></i> صفحه ورود </a></li>
+            <li><a href="/login"><i class="icon-signin"></i> صفحه ورود </a></li>
             </ul>
         </div>
         <!--END MENU SECTION -->
@@ -462,22 +350,16 @@
         <!--END PAGE CONTENT -->
         <!-- RIGHT STRIP  SECTION -->
         <div id="left">
-            <div class="well well-small">
-                <ul class="list-unstyled">
-                    <li >بازدیدکنندگان : <span>23,000</span></li>
-                    <li>کاربران : <span>53,000</span></li>
-                    <li>ثبت نام کنندگان : <span>3,000</span></li>
-                </ul>
-            </div>
-            <div class="well well-small">
-                <a class="btn btn-white btn-block "  href="<?= url('admin/books'); ?>">راهنما</a>
 
-                <a class="btn btn-primary btn-block"  href="<?= url('admin/books'); ?>"> کتاب ها</a>
-                <a class="btn btn-info btn-block" href="<?= Url('admin/translator'); ?>">مترجمین</a>
-                <a class="btn btn-success btn-block" href="<?= Url('admin/writer') ;?>">نویسندگان</a>
-                <a class="btn btn-danger btn-block" href="">سفارشات</a>
-                <a class="btn btn-warning btn-block" href=""> دیدگاه ها </a>
-                <a class="btn btn-info btn-block" href="<?= Url('admin/users') ;?>"> کاربران </a>
+            <div class="well well-small">
+                <a class="btn btn-white btn-block " href="<?= url('admin/books') ?>">راهنما</a>
+
+                <a class="btn btn-primary btn-block" href="<?= url('admin/books') ?>"> کتاب ها</a>
+                <a class="btn btn-info btn-block" href="<?= Url('admin/translator') ?>">مترجمین</a>
+                <a class="btn btn-success btn-block" href="<?= Url('admin/writer') ?>">نویسندگان</a>
+                <a class="btn btn-danger btn-block" href="#">سفارشات</a>
+                <a class="btn btn-warning btn-block" href="<?= Url('admin/comments') ?>"> دیدگاه ها </a>
+                <a class="btn btn-info btn-block" href="<?= Url('admin/users') ?>"> کاربران </a>
             </div>
         </div>
         <!-- END RIGHT STRIP  SECTION -->
@@ -485,6 +367,8 @@
     <!--END MAIN WRAPPER -->
     <!-- FOOTER -->
     <div id="footer">
+        <p>کلیه حقوق سایت متعلق به <a href="<?= Url('/') ?>">فروشگاه کتاب </a> می باشد.</p>
+
     </div>
     <!--END FOOTER -->
     <!-- GLOBAL SCRIPTS -->
@@ -509,3 +393,49 @@
 <!-- END BODY -->
 
 </html>
+<?php
+
+use App\CommentsModel;
+// use App\SefareshModel;
+use App\CallMeModel;
+
+function countcomment()
+{
+    $count = CommentsModel::where('state', '0')->count();
+    return $count;
+}
+
+function getComment()
+{
+    $comment = CommentsModel::where('state', '0')
+        ->take(10)
+        ->get();
+    return $comment;
+}
+
+// function countsefaresh(){
+//     $count = SefareshModel::where('state',1)->count();
+//     return $count;
+// }
+
+function countmessage()
+{
+    $count = CallMeModel::where('state', 0)->count();
+    return $count;
+}
+
+function getMessages()
+{
+    $message = CallMeModel::where('state', '0')
+        ->take(5)
+        ->get();
+    return $message;
+}
+
+function countText($text)
+{
+    $gettext = substr($text, 0, 60);
+    return $gettext;
+}
+
+?>

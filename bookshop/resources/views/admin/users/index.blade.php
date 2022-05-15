@@ -2,7 +2,7 @@
 @section('content')
     <div id="content">
         <div class="inner" style="min-height:700px;">
-            <div class='class-lg-12'>
+            <div class='col-lg-12'>
                 <div class="row">
                     <h1>نمایش و مدیریت کاربران سایت <a href="<?= Url('admin/users/create') ?>"
                             class="btn btn-primary btn-sm btn-line"> افزودن کاربر</a> </h1>

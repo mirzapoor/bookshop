@@ -1,14 +1,14 @@
 @extends('layouts.adminLayouts')
 @section('content')
     <div id="content">
-        <div class="inner" style="min-height:700px;">
-            <div class='class-lg-12'>
+        <div class="inner" style="min-height:500px;">
+            <div class='col-lg-12'>
                 <div class="row">
                     <h1> نمایش و مدیریت دیدگاه ها </h1>
                 </div>
             </div>
             <hr>
-            <div class="row" style="margin-top: 30px ;">
+            <div class="row" style="margin-top: 5px ; " >
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
@@ -37,7 +37,7 @@
                                                 <td>{{ $comment->lname_comments }} </td>
                                                 <td>{{ $comment->email_comments }}</td>
                                                 <td>{{ $comment->content_comments }}</td>
-                                                <td> {!! contentcomment($comment->replaye_comments) !!} </td>
+                                                <td > {!! contentcomment($comment->replaye_comments) !!} </td>
 
                                                 @if ($comment->state == '0')
                                                     <td style="background-color: red;"> بررسی و تایید نشده </td>
@@ -45,23 +45,26 @@
                                                     <td style="background-color: green;color:#fff;"> تایید شده است </td>
                                                 @endif
 
+
                                                 <td>
                                                     <?php $book = book($comment->id_books); ?>
-                                                    <img src="<?= Url('assets/img/imagebook' . $book->img_book) ?>"
-                                                        width="60" height="60" alt="{{ $book->name_book }}"
+
+                                                    <img src="<?= Url('assets/img/imagebook/' . $book->img_book) ?>"
+                                                        alt="{{ $book->name_book }}" width="60" height="60"
                                                         title="{{ $book->name_book }}">
                                                 </td>
                                                 <td>
                                                     <a href="<?= Url('admin/comments/' . $comment->id . '/edit') ?>"
                                                         class="btn btn-primary btn-sm btn-line"
-                                                        style="margin-bottom: 10px; width:50px ; margin-right: 10px;"> پاسخ
+                                                        style="margin-bottom: 10px; width:80px ; margin-right: 10px;"> پاسخ
                                                         دادن</a>
                                                     <a href="#" class="btn btn-danger btn-sm btn-line" data-toggle="modal"
                                                         data-target="#delete{{ $comment->id }}"
-                                                        style="margin-bottom: 10px; width:50px ; margin-right: 10px;">
+                                                        style="margin-bottom: 10px; width:80px ; margin-right: 10px;">
                                                         حذف</a>
                                                     <a href="<?= Url('admin/comments/success/' . $comment->id) ?>"
-                                                        class="btn btn-success btn-sm btn-line">تایید دیدگاه</a>
+                                                        class="btn btn-success btn-sm btn-line" 
+                                                        style="margin-bottom: 10px; width:80px ; margin-right: 10px;">تایید دیدگاه</a>
                                                 </td>
                                             </tr>
                                         @endforeach

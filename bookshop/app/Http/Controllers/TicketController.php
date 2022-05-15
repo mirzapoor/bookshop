@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\CommentsModel;
+use App\CallMeModel;
 use App\Http\Requests;
 use Auth;
-class CommentController extends Controller
+class TicketController extends Controller
 {
     public function __construct()
     {
@@ -16,6 +16,7 @@ class CommentController extends Controller
             $this->middleware('auth');
         }
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -23,9 +24,8 @@ class CommentController extends Controller
      */
     public function index()
     {
-        //
-        $comments = CommentsModel::orderby('id','desc')->paginate(15);
-        return View('admin.comment.index',['comments'=>$comments]);
+        $ticket = CallMeModel::orderby('id','desc')->paginate(20);
+        return View('admin.tickets.index',['ticket'=>$ticket]);
     }
 
     /**
@@ -47,23 +47,6 @@ class CommentController extends Controller
     public function store(Request $request)
     {
         //
-        $comment = new CommentsModel();
-        $comment->name_comments = Auth::user()->fname;
-        $comment->lname_comments = Auth::user()->lname;
-        $comment->email_comments = Auth::user()->email;
-        $comment->content_comments = $request->answer;
-        $comment->replaye_comments = $request->id_comment;
-        $comment->id_books = $request->id_books;
-        $comment->state = '1';
-
-        if ( $comment->save() ) {
-
-            $oldcomment = CommentsModel::find( $request->id_comment );
-            $oldcomment->state = '1';
-            if ( $oldcomment->update() ) {
-                return redirect('admin/comments');
-            }
-        }
     }
 
     /**
@@ -75,8 +58,6 @@ class CommentController extends Controller
     public function show($id)
     {
         //
-        $delete = CommentsModel::find( $id )->delete();
-        return redirect('admin/comments');
     }
 
     /**
@@ -88,9 +69,6 @@ class CommentController extends Controller
     public function edit($id)
     {
         //
-        
-        $comment = CommentsModel::find( $id );
-        return View('admin.comment.edit',['comment'=>$comment]);
     }
 
     /**
@@ -114,15 +92,21 @@ class CommentController extends Controller
     public function destroy($id)
     {
         //
-       
     }
 
-    public function success( $id )
+    public function ansewerget( $id )
     {
-        $comment = CommentsModel::find( $id );
-        $comment->state = '1';
-        if ( $comment->update() ) {
-            return redirect('admin/comments');
+        $tick = CallMeModel::find( $id );
+        return View('admin.tickets.edit',['tick'=>$tick]);
+    }
+
+    public function ansewer( Request $request )
+    {
+        $tick = CallMeModel::find( $request->id_ticket );
+        $tick->ansewer = $request->answer;
+        $tick->state = '1';
+        if ( $tick->update() ) {
+            return redirect('admin/ticket');
         }
     }
 }

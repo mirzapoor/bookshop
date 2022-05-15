@@ -5,7 +5,7 @@
 @section('content')
     <div id="content">
         <div class="inner" style="min-height:700px;">
-            <div class='class-lg-12'>
+            <div class='col-lg-12'>
                 <div class="row">
 
                     <h1>ویرایش کاربر <span style="color: red;">{{ $record->fname }} {{ $record->lname }}</span></h1>

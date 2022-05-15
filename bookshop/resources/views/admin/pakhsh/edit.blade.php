@@ -2,7 +2,7 @@
 @section('content')
     <div id="content">
         <div class="inner" style="min-height:700px;">
-            <div class='class-lg-12'>
+            <div class='col-lg-12'>
                 <div class="row">
                     <h1>ویرایش اطلاعات مرکز پخش <span style=" color:red; font-size:40px;">{{ $record->name_pakhsh }}</span>
                     </h1>
