@@ -113,8 +113,8 @@ class CommentController extends Controller
      */
     public function destroy($id)
     {
-        //
-       
+        $delete =CommentsModel::find($id)->delete();
+        return redirect('admin/comments');       
     }
 
     public function success( $id )

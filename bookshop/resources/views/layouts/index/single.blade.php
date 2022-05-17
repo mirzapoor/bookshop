@@ -102,6 +102,7 @@
             @yield('single')
         </div>
     </div>
+   
     <section class="featured" id="featured">
         <h1 class="heading"><span>کتابهای مرتبط</span></h1>
                 @yield('contentbook')

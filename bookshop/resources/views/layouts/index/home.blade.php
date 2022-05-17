@@ -265,106 +265,8 @@
 
         <div class="swiper reviews-slider">
             <div class="swiper-wrapper">
-                <div class="swiper-slide box">
-                    <img src="<?= Url('index/image/pic-1.png') ?>" alt="" />
-                    <h3>نام مشتری</h3>
-                    <p>
-                        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
-                        استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در
-                        ستون و سطرآنچنان که لازم است
-                    </p>
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                    </div>
-                </div>
-
-                <div class="swiper-slide box">
-                    <img src="<?= Url('index/image/pic-2.png') ?>" alt="" />
-                    <h3>نام مشتری</h3>
-                    <p>
-                        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
-                        استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در
-                        ستون و سطرآنچنان که لازم است
-                    </p>
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                    </div>
-                </div>
-
-                <div class="swiper-slide box">
-                    <img src="<?= Url('index/image/pic-3.png') ?>" alt="" />
-                    <h3>نام مشتری</h3>
-                    <p>
-                        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
-                        استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در
-                        ستون و سطرآنچنان که لازم است
-                    </p>
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                    </div>
-                </div>
-                <div class="swiper-slide box">
-                    <img src="<?= Url('index/image/pic-4.png') ?>" alt="" />
-                    <h3>نام مشتری</h3>
-                    <p>
-                        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
-                        استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در
-                        ستون و سطرآنچنان که لازم است
-                    </p>
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                    </div>
-                </div>
-
-                <div class="swiper-slide box">
-                    <img src="<?= Url('index/image/pic-5.png') ?>" alt="" />
-                    <h3>نام مشتری</h3>
-                    <p>
-                        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
-                        استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در
-                        ستون و سطرآنچنان که لازم است
-                    </p>
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                    </div>
-                </div>
-
-                <div class="swiper-slide box">
-                    <img src="<?= Url('index/image/pic-6.png') ?>" alt="" />
-                    <h3>نام مشتری</h3>
-                    <p>
-                        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
-                        استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در
-                        ستون و سطرآنچنان که لازم است
-                    </p>
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                    </div>
-                </div>
+                    @yield('comments')
+                   
             </div>
         </div>
     </section>
@@ -386,7 +288,7 @@
 
             <div class="box">
                 <h3> لینک ها سریع</h3>
-                <a href="#"> <i class="fas fa-arrow-right"></i> خانه </a>
+                <a href="/"> <i class="fas fa-arrow-right"></i> خانه </a>
                 <a href="#"> <i class="fas fa-arrow-right"></i> ویژه </a>
                 <a href="#"> <i class="fas fa-arrow-right"></i> محبوب ها </a>
                 <a href="#"> <i class="fas fa-arrow-right"></i> نظرات </a>
@@ -394,7 +296,7 @@
 
             <div class="box">
                 <h3>لینک</h3>
-                <a href="#"> <i class="fas fa-arrow-right"></i> حساب کاربری </a>
+                <a href="/register"> <i class="fas fa-arrow-right"></i> حساب کاربری </a>
                 <a href="#">
                     <i class="fas fa-arrow-right"></i> اقلام سفارش داده شده
                 </a>

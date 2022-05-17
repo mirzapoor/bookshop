@@ -56,7 +56,9 @@
                                         <div class="form-group">
                                             {{ Form::label('details_book', 'مشخصات کتاب', ['class' => 'control-label cal-lg-3']) }}
                                             <div class="col-lg-7">
-                                                {!! Form::textarea('details_book', null, ['class' => 'ckeditor', 'form-control', 'placeholder' => 'مشخصات کتاب را وارد کنید.']) !!}
+                                               
+                                                {{-- {{ Form::textarea('answer',null,['class'=>'form-control','placeholder'=>'پاسخ خود را برای این دیدگاه وارد نمایید.']) }} --}}
+                                                {!! Form::textarea('answer', null, ['class' => 'ckeditor', 'form-control', 'placeholder' => 'مشخصات کتاب را وارد کنید.']) !!}
                                             </div>
                                         </div>
 

@@ -76,7 +76,7 @@ class RegisterController extends Controller
             'address' => $data['address'],
             'details' => $data['details'],
             'role' => '0',
-            'img' => '1484230814.png',
+            'img' => 'pic-2.png',
         ]);
     }
 }

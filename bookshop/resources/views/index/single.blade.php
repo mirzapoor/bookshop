@@ -1,3 +1,9 @@
+<?php
+use Hekmatinasser\Verta\Verta;
+$v = Verta::now(); //1396-02-02 15:32:08
+
+?>
+
 @extends('layouts.index.single')
 @section('head')
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -335,60 +341,47 @@
                                         </div>
                                         <div>
                                             <span class="d-block fs-12 mb-3">{{ $comment->name_comments }}</span>
-                                            <span class="d-block fs-10">14:52 | 00.12.20<a href="#"
-                                                    class="text-info border-start ps-3 ms-3"><i
-                                                        class="bi bi-reply display-3"
-                                                        style="font-size: 16px;"></i></a></span>
+                                            <span class="d-block fs-10"><a href="#"
+                                                    class="text-info border-start ps-3 ms-3"><svg
+                                                        style="font-size: 16px;color: black;"
+                                                        xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                        fill="currentColor" class="bi bi-calendar" viewBox="0 0 16 16">
+                                                        <path
+                                                            d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z" />
+                                                    </svg>
+                                                    <?php echo $v; ?></a></span>
                                         </div>
                                     </div>
                                     <p class="m-0 mt-3 lh-lg fs-12"> {{ $comment->content_comments }}
 
                                     </p>
                                 </div>
-                                {{-- @foreach ($recomments as $recomment)
-
-
+                                @foreach ($recomments as $recomment)
                                     <div class="child-item ms-0 ms-md-4 border p-3 mb-3 position-relative">
                                         <div class="rating-numer position-absolute end-0 top-0 px-2 pt-3 fs-12">
-                                            {{ $recomment->name_comments }}<i class="bi bi-star text-warning"></i>&nbsp;4
+                                            {{ $recomment->name_comments }}<i
+                                                class="bi bi-star text-warning"></i>&nbsp;4
                                         </div>
                                         <div class="meta d-flex align-items-center">
                                             <div class="me-3">
                                                 <img src="" alt="">
                                             </div>
-
                                         </div>
                                         <p class="m-0 mt-3 lh-lg fs-12">
                                             {{ $recomment->content_comments }}
-
                                         </p>
                                     </div>
-
-                                    @endforeach --}}
-
-
-                                    <!--  ==========  -->
-                                    <!--  = Single Nested Comment - one level =  -->
-                                    <!--  ==========  -->
                                 @endforeach
-
-                                <br />
-                                <br />
-                                <br />
-                                <br />
-                                <br />
-                                <br />
-                                <br />
-                                <br />
-
-                                <hr />
+                                <!--  ==========  -->
+                                <!--  = Single Nested Comment - one level =  -->
+                                <!--  ==========  -->
+                            @endforeach
+                            <hr />
                         </div>
-
                     </div>
                 </div>
             </div>
         </div>
-
     </section>
 @endsection
 @section('contentbook')
@@ -406,9 +399,10 @@
                             alt="{{ $bookstar->name_book }}" title="{{ $bookstar->name_book }}" />
                     </div>
                     <div class="content">
-                        <h4>{{ $bookstar->name_book }}</h4>
+                        <h4 style=" ">{{ $bookstar->name_book }}</h4>
                         <div class="price">هزارتومن{{ $bookstar->price_book }} <span> </span></div>
-                        <div onclick="add_cart('{{ $bookstar->id }}')" class="btn"> افزودن به سبد خرید</div>
+                        <div onclick="add_cart('{{ $bookstar->id }}')" class="btn border-success size-lg text-center " > افزودن به سبد
+                            خرید</div>
                     </div>
                 </div>
             @endforeach
@@ -466,11 +460,11 @@ function getbookstar()
     return $bookstar;
 }
 
-function replaycomments($id)
-{
-    $recomments = CommentsModel::where(['replaye_comments' => $id, 'state' => 1])->get();
-    return $recomments;
-}
+// function replaycomments($id)
+// {
+//     $recomments = CommentsModel::where(['replaye_comments' => $id, 'state' => 1])->get();
+//     return $recomments;
+// }
 
 function namepakhsh($id)
 {

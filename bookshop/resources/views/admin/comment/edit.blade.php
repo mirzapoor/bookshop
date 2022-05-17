@@ -29,7 +29,7 @@
 
                                             <td>
                                                 <?php $book = book($comment->id_books); ?>
-                                                <img src="<?= Url('assets/img/imagebook' . $book->img_book) ?>" width="60"
+                                                <img src="<?= Url('assets/img/imagebook/' . $book->img_book); ?>" width="60"
                                                     height="60" alt="{{ $book->name_book }}"
                                                     title="{{ $book->name_book }}">
                                             </td>

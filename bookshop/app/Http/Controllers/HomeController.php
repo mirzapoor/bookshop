@@ -32,15 +32,19 @@ class HomeController extends Controller
     public function index()
     {
         $category = SubjectsModel::where('replay_subjects','-')->orderby('id','desc')->get();
+       
         $newcontent =BooksModel::orderby('id','desc')->take(5)->get();
         $newcontent2 =BooksModel::orderby('id','desc')->skip(5)->take(5)->get();
         $favoriteBook =BooksModel::orderby('view_book','desc')->take(5)->get();
+        $comment =CommentsModel::orderby('id','desc')->take(5)->get();
+        // $comment = CommentsModel::orderby('state','desc')->get();
 
         return view('index.index',
                         ['category'=>$category ,
                         'newcontent'=>$newcontent, 
                         'newcontent2'=>$newcontent2,
-                        'favoriteBook'=>$favoriteBook
+                        'favoriteBook'=>$favoriteBook,
+                        'comment'=>$comment
                     ]);
     }
 
@@ -64,13 +68,15 @@ class HomeController extends Controller
         $countprint = CountPrintsModel::where('id_books',$record->id)->orderby('id','desc')->first();
 
         $comments = CommentsModel::where(['id_books'=>$record->id,'replaye_comments'=>'-','state'=>1])->get();
+        $recomments = CommentsModel::where(['replaye_comments' =>$record->id, 'state' => 1])->get();
+
 
         $record->view_book += 1;
 
         if ( $record->update() ) {
             
             return View('index.single',['category'=>$category,'record'=>$record,'moalefs'=>$moalefs,'motarjems'=>$motarjems,
-            'pakhshs'=>$pakhshs,'countprint'=>$countprint,'comments'=>$comments]);
+            'pakhshs'=>$pakhshs,'countprint'=>$countprint,'comments'=>$comments,'recomments'=>$recomments]);
          } 
     }
 

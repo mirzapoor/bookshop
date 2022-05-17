@@ -34,7 +34,7 @@
         <li class="nav-item">
             <a class="nav-link h2 ml-5 text-white" href="#">تماس با ما</a>
         </li>
-        
+
     </ul>
 @endsection
 
@@ -168,6 +168,26 @@
                 @else
                     <div onclick="add_cart('{{ $bookstar->id }}')" class="btn">اضافه کردن به سبد خرید</div>
                 @endif
+            </div>
+        </div>
+    @endforeach
+@endsection
+
+@section('comments')
+    @foreach ($comment as $comments)
+        <div class="swiper-slide box">
+
+            <img src="<?= Url('index/image/pic-2.png') ?>" alt="" />
+            <h3>{{ $comments->name_comments }} {{ $comments->lname_comments }}</h3>
+            <p>
+                {{ $comments->content_comments }}
+            </p>
+            <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
             </div>
         </div>
     @endforeach
