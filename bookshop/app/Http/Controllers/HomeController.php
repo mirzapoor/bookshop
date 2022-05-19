@@ -114,6 +114,14 @@ class HomeController extends Controller
         return View('index.shop',['category'=>$category,'books'=>$books ,'order_date'=> $order_date]);
     }
 
+    public function about()
+    {
+        $category = SubjectsModel::where('replay_subjects','-')->orderby('id','desc')->get();
+        $order_date= BooksModel::orderby('id','desc');
+        $books = BooksModel::orderby('id','desc')->paginate(6);
+        return View('index.about',['category'=>$category,'books'=>$books ,'order_date'=> $order_date]);
+    }
+
     public function comment( Request $request )
     {
         $comment = new CommentsModel( $request->all() );

@@ -16,7 +16,7 @@ Route::get('/book/{url}','HomeController@single');
 Route::post('/cart','HomeController@addCart');
 Route::get('/shop','HomeController@shop');
 Route::post('/comment','HomeController@comment');
-
+Route::get('/about', 'HomeController@about');
 
 
 
@@ -48,4 +48,4 @@ Route::prefix('admin')->group(function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');

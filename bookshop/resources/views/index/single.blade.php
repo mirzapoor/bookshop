@@ -34,11 +34,9 @@ $v = Verta::now(); //1396-02-02 15:32:08
         @endforeach
 
         <li class="nav-item">
-            <a class="nav-link h2 ml-5 text-white" href="#">درباره ما</a>
+            <a class="nav-link h2 ml-5 text-white" href="about">درباره ما</a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link h2 ml-5 text-white" href="#">تماس با ما</a>
-        </li>
+       
     </ul>
 @endsection
 

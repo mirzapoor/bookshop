@@ -5,6 +5,8 @@
 
     <link rel="stylesheet" href="<?= Url('index/css/main.css') ?>">
     <link rel="stylesheet" href="<?= Url('index/css/style_cart.css') ?>">
+    <link rel="stylesheet" href="<?= Url('index/css/style_shop.css') ?>">
+
 @endsection
 
 @section('menunavbar')
@@ -29,11 +31,9 @@
         @endforeach
 
         <li class="nav-item">
-            <a class="nav-link h2 ml-5 text-white" href="#">درباره ما</a>
+            <a class="nav-link h2 ml-5 text-white" href="/about">درباره ما</a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link h2 ml-5 text-white" href="#">تماس با ما</a>
-        </li>
+       
 
     </ul>
 @endsection
