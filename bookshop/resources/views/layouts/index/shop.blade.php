@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html dir="rtl" lang="fa">
+
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>فروشگاه کتاب </title>
+   
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
     <!-- font awesome cdn link  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
@@ -14,8 +17,8 @@
         integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous" />
     @yield('head')
     <link rel="stylesheet" href="<?= Url('index/css/style.css') ?>" />
-    <script type="text/javascript" src="<?= Url('index/js/jquery-3.6.0.min.js');?>"></script>
 </head>
+
 <body>
     <!-- header section starts  -->
     <header class="header">
@@ -27,9 +30,11 @@
             </form>
             <div class="icons">
                 <div id="search-btn" class="fas fa-search"></div>
-                @yield('cart')
-                <div id="login-btn" class="fas fa-user"></div>
+                <div id="login-btn" class="fas fa-user"><a href="{{ route('login') }}"></a></div>
+                <div class="headerLeft" id="addCart">
 
+                    @yield('addCart')
+                </div>
             </div>
         </div>
         <nav class="header-2 navbar navbar-expand-md h1">
@@ -51,31 +56,64 @@
     <!-- login form  -->
     <div class="login-form-container">
         <div id="close-login-btn" class="fas fa-times"></div>
-        <form action="">
+
+        <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
             <h3>ورود</h3>
+            {{ csrf_field() }}
+
             <span class="text-right">نام کاربری</span>
-            <input type="email" name="" class="box" placeholder="ایمیل خود را وارد کنید" id="" />
-            <span class="text-right">رمز عبور</span>
-            <input type="password" name="" class="box" placeholder="رمز عبور خود را وارد کنید" id="" />
-            <div class="checkbox">
-                <input type="checkbox" name="" id="remember-me" />
-                <label for="remember-me"> به خاطر سپردن</label>
+            <div>
+                <input id="email" type="email" class="form-control box mt-4 " name="email" value="{{ old('email') }}"
+                    placeholder="ایمیل خود را وارد کنید" />
+                @if ($errors->has('email'))
+                    <span class="help-block">
+                        <strong>{{ $errors->first('email') }}</strong>
+                    </span>
+                @endif
             </div>
-            <button type="submit" href="<?= Url('/login') ;?>" class="btn">ورود</button>
-            <p class="text-center"><a href="#"> رمز خود را فراموش کرده اید ؟ </a></p>
+            <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                <span for="password" class="col-md-4 control-label text-right h4 ">رمز عبور</span>
+
+                <div>
+                    <input id="password" type="password" class="form-control box mt-4 " name="password"
+                        placeholder="رمز عبور خود را وارد کنید">
+
+                    @if ($errors->has('password'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('password') }}</strong>
+                        </span>
+                    @endif
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-6 col-md-offset-4">
+                    <div class="checkbox">
+                        <label type="checkbox" for="remember-me">
+                            <input type="checkbox" name="remember" id="remember-me"> مرا به خاطر
+                            بسپار
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <a type="submit" href="<?= Url('/') ?>" class="btn">ورود</a>
+            <p class="text-center"><a href="{{ url('/password/reset') }}"> رمز خود را فراموش کرده اید ؟ </a></p>
             <p class="text-right text-dark">عضو جدید:
             </p>
-            <button href="<?= Url('/register') ?>" class="btn btn-success">ساخت حساب</button>
+            <a href="{{ url('/register') }}" class="btn btn-success">ساخت حساب</a>
         </form>
     </div>
+
     <!-- home section starts  -->
+
     @yield('shop')
     @yield('numberpage')
-    <!-- footer section starts  -->
-    <section class="footer">
+    
+
+    <!-- footer section ends -->
+    <section class="footer text-center" style="padding: 0%">
         <hr>
         <div class="box-container">
-            <div class="box">
+            <div class="box text-right mr-5">
                 <h3> لینک ها سریع</h3>
                 <a href="/"> <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                         class="bi bi-house-door" viewBox="0 0 16 16">
@@ -89,7 +127,7 @@
                     </svg> فروشگاه </a>
             </div>
 
-            <div class="box">
+            <div class="box text-right mr-5">
                 <h3>حساب کاربری</h3>
                 <a href="/login"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                         class="bi bi-person" viewBox="0 0 16 16">
@@ -107,7 +145,7 @@
                     <i class="fas fa-arrow-right"></i> اقلام سفارش داده شده
                 </a>
             </div>
-            <div class="box">
+            <div class="box text-right mr-5">
                 <h3> تماس با ما</h3>
                 <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                         class="bi bi-geo-alt" viewBox="0 0 16 16">
@@ -137,7 +175,7 @@
 
         </div>
         <hr>
-        <div class="share">
+        <div class="share" style="padding: 0%">
             <a href="#" class="fab fa-facebook-f"></a>
             <a href="#" class="fab fa-twitter"></a>
             <a href="#" class="fab fa-instagram"></a>
@@ -146,25 +184,24 @@
         </div>
 
 
-    </section>
-    <!-- footer section ends -->
-
     <!-- loader  -->
 
-    {{-- <div class="loader-container">
-        <img src="'index/image/loader-img.gif') ?>" alt="">
-    </div> --}}
+    <div class="loader-container">
+        <img src="<?= Url('index/image/loader-img.gif') ?>" alt="">
+    </div>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
     </script>
-    <script  src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
     </script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
     </script>
-    <script  src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+    <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
     <!-- custom js file link  -->
+    
     <script type="text/javascript" src="<?= Url('index/js/script.js') ?>"></script>
 </body>
+
 </html>

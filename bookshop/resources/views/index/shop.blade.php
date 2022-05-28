@@ -1,7 +1,6 @@
 @extends('layouts.index.shop')
 @section('head')
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
     <link rel="stylesheet" href="<?= Url('index/css/main.css') ?>">
     <link rel="stylesheet" href="<?= Url('index/css/style_cart.css') ?>">
     <link rel="stylesheet" href="<?= Url('index/css/styles.css') ?>">
@@ -32,16 +31,9 @@
         <li class="nav-item">
             <a class="nav-link h2 ml-5 text-white" href="/about">درباره ما</a>
         </li>
-       
     </ul>
 @endsection
-
-@section('cart')
-    <?php
-    $count = sizeof([Session::get('cart')]); ?>
-    <a href="/cart" class="cart-btn nav-icon "><i class="fas fa-cart-plus">
-            <div class="cart-items">{{ $count }}</div>
-        </i></a>
+@section('addCart')
     @include('index.cart')
 @endsection
 
@@ -113,27 +105,21 @@
                                 </div>
                                 <div class="add-to-cart position-relative w-100 pb-0 start-0 bottom-0 bg-white">
                                     <a href="<?= Url('book/' . $book->url_book) ?>"
-                                        class="d-block w-100 py-2  text-center  fs-10 btn">مشاهده جزئیات <i
-                                            class="bi bi-basket"></i></a>
+                                        class="d-block w-100 py-2  text-center  fs-10 btn">مشاهده جزئیات </a>
                                     @if ($book->state_book == '1' || $book->state_book == '2')
-                                        <div onclick="add_cart('{{ $book->id }}')"
+                                        <div 
                                             class="d-block w-100 py-2  text-center  fs-10 btn  disabled">ناموجود
                                         </div>
                                     @else
-                                        <div onclick="add_cart('{{ $book->id }}')"
-                                            class="d-block w-100 py-2  text-center  fs-10 btn">افزودن به سبد خرید</div>
+                                        <div onclick="add_cart('{{ $book->id }}')" class="d-block w-100 py-2  text-center  fs-10 btn 
+                                            bi bi-basket">افزودن به سبد خرید</div>
                                     @endif
-
-
                                 </div>
                             </div>
                         </div>
                     @endforeach
-
-
                 </div>
             </div>
-
         </div>
     @section('numberpage')
         <div style="margin-right: 50%">
@@ -146,7 +132,7 @@
 </section>
 @endsection
 @section('footer')
-<?php $url10 = Url('/cart'); ?>
+<?php $url = Url('/add'); ?>
 <script type="text/javascript">
     add_cart = function(id) {
         $.ajaxSetup({
@@ -154,19 +140,62 @@
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
+
         $.ajax({
-            url: '<?= $url10 ?>',
+            url: '<?= $url ?>',
             type: "POST",
             data: 'id_book=' + id,
             success: function(data) {
-                alert(data);
+                $('#addCart').html(data);
             }
         });
     }
 </script>
+<?php $url10 = Url('/remove'); ?>
+<script type="text/javascript">
+    delete_cart = function(id) {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        $.ajax({
+            url: '<?= $url10 ?>',
+            type: "POST",
+            data: 'id_book=' + id,
+
+            success: function(data) {
+                $('#addCart').html(data);
+            }
+        });
+    }
+</script>
+<?php $url11 = Url('/empty'); ?>
+<script type="text/javascript">
+    empty_cart = function() {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        $.ajax({
+            url: '<?= $url11 ?>',
+            type: "POST",
+            success: function(data) {
+                $('#addCart').html(data);
+            }
+        });
+    }
+</script>
+
 <script src="<?= Url('index/js/scripts.js') ?>"></script>
 <script src="<?= Url('index/js/index.js') ?>"></script>
 <script src="<?= Url('index/js/script_shop.js') ?>"></script>
+<script type="text/javascript" src="<?= Url('index/js/jQuery.js') ?>"></script>
+
+
 @endsection
 
 

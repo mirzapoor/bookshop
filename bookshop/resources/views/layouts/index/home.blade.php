@@ -8,6 +8,7 @@
     <title>فروشگاه کتاب </title>
 
     <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
 
     <!-- font awesome cdn link  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
@@ -15,6 +16,7 @@
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
         integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous" />
+    <script type="text/javascript" src="<?= Url('index/js/') ?>"></script>
     @yield('head')
     <link rel="stylesheet" href="<?= Url('index/css/style.css') ?>" />
 </head>
@@ -23,31 +25,31 @@
     <!-- header section starts  -->
 
     <header class="header">
-        <div class="header-1">
-            <a href="/shop" class="logo"> <i class="fas fa-book"></i> کتابخانه </a>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="header-1" style="padding: 0px 5px">
+                    <a href="/shop" class="logo"> <i class="fas fa-book"></i> کتابخانه </a>
 
-            <form action="" class="search-form">
-                <input type="search" name="" placeholder="جستجو کنید" id="search-box" />
-                <label for="search-box" class="fas fa-search"></label>
-            </form>
+                    <form action="" class="search-form">
+                        <input type="search" name="" placeholder="جستجو کنید" id="search-box" />
+                        <label for="search-box" class="fas fa-search"></label>
+                    </form>
 
-            <div class="icons">
-                <div id="search-btn" class="fas fa-search"></div>
-                {{-- <a href="#"><i class="fas fa-heart"></i></a> --}}
-                <a href="#"><i class="fas fa-shopping-cart"></i></a>
+                    <div class="icons">
+                        <div id="search-btn" class="fas fa-search"></div>
+                        <div id="login-btn" class="fas fa-user"><a href="{{ route('login') }}"></a></div>
+                        <div class="headerLeft" id="addCart">
 
-                @yield('cart')
-                <div id="login-btn" class="fas fa-user"><a href="{{ route('login') }}"></a></div>
-            </div>
-        </div>
-
-        <nav class="header-2 navbar navbar-expand-md h1">
-            <div id="my-nav" class="collapse navbar-collapse justify-content-center">
-                @yield('menunavbar')
-            </div>
-        </nav>
+                            @yield('addCart')
+                        </div>
+                    </div>
+                </div>
+                <nav class="header-2 navbar navbar-expand-md h1">
+                    <div id="my-nav" class="collapse navbar-collapse justify-content-center">
+                        @yield('menunavbar')
+                    </div>
+                </nav>
     </header>
-
     <!-- header section ends -->
 
     <!-- bottom navbar  -->
@@ -59,10 +61,6 @@
         <a href="#reviews" class="fas fa-comments"></a>
         <a href="#blogs" class="fas fa-blog"></a>
     </nav>
-
-
-
-
     <!-- login form  -->
 
     <div class="login-form-container">
@@ -106,8 +104,6 @@
                     </div>
                 </div>
             </div>
-
-
             <a type="submit" href="<?= Url('/') ?>" class="btn">ورود</a>
             <p class="text-center"><a href="{{ url('/password/reset') }}"> رمز خود را فراموش کرده اید ؟ </a></p>
             <p class="text-right text-dark">عضو جدید:
@@ -134,16 +130,14 @@
             </div>
         </div>
     </section>
-
-
-    <section class="icons-container">
+    <section class="icons-container" style="padding: 20px 5px">
         <div class="container">
             <div class="row text-center">
                 <div class="col-md-3 mb-5">
                     <i class="fas fa-shipping-fast fa-10x text-success"></i>
                     <div class="content mt-5">
                         <h3 class="mb-4 text-secondary">ارسال رایگان</h3>
-                        <p class="text-muted">سفارش بالای 100 هزار تومان</p>
+                        <p class="text-muted text-center">سفارش بالای 100 هزار تومان</p>
                     </div>
                 </div>
 
@@ -151,23 +145,21 @@
                     <i class="fas fa-lock fa-10x text-success"></i>
                     <div class="content mt-5">
                         <h3 class="mb-4 text-secondary">پرداخت امن</h3>
-                        <p class="text-muted">100 پرداخت مطمئن</p>
+                        <p class="text-muted text-center">100 پرداخت مطمئن</p>
                     </div>
                 </div>
-
                 <div class="col-md-3 mb-5">
                     <i class="fas fa-redo-alt fa-10x text-success"></i>
                     <div class="content mt-5">
                         <h3 class="mb-4 text-secondary">بازگشت آسان</h3>
-                        <p class="text-muted">10 روز مهلت بازگشت</p>
+                        <p class="text-muted text-center">10 روز مهلت بازگشت</p>
                     </div>
                 </div>
-
                 <div class="col-md-3 mb-5">
                     <i class="fas fa-headset fa-10x text-success"></i>
                     <div class="content mt-5">
                         <h3 class="mb-4 text-secondary">پشتیبانی 7/24</h3>
-                        <p class="text-muted">در هر زمان با ما تماس بگیرید</p>
+                        <p class="text-muted text-center">در هر زمان با ما تماس بگیرید</p>
                     </div>
                 </div>
             </div>
@@ -178,7 +170,7 @@
 
     <!-- featured section starts  -->
 
-    <section class="featured" id="featured">
+    <section class="featured" id="featured" style="padding:20px 0px">
         <h1 class="heading"><span>کتابهای ویژه</span></h1>
 
         <div class="swiper featured-slider">
@@ -197,7 +189,7 @@
 
     <!-- newsletter section starts -->
 
-    <section class="newsletter">
+    <section class="newsletter" style="padding:20px 0px">
         <form action="">
             <h3>اگر هنوز به جمع ما نیومدی بهتر همین الان به فکر بشی</h3>
             <input type="email" name="" placeholder="ایمیل خود را وارد کنید" id="" class="box" />
@@ -209,7 +201,7 @@
 
     <!-- arrivals section starts  -->
 
-    <section class="arrivals" id="arrivals">
+    <section class="arrivals" id="arrivals" style="padding:30px 0px">
         <h1 class="heading"><span>کتابهای جدید</span></h1>
         <div class="swiper arrivals-slider">
             @yield('newcontent1')
@@ -226,7 +218,7 @@
 
     <!-- deal section starts  -->
 
-    <section class="deal">
+    <section class="deal" style="padding:20px 0px">
         <div class="content">
             <h3>معامله روز</h3>
             <h1>تا 50٪ تخفیف</h1>
@@ -247,7 +239,7 @@
 
 
 
-    <section class="featured" id="featured">
+    <section class="featured" id="featured" style="padding: 30px 0px">
         <h1 class="heading"><span>محبوب ترین کتاب ها</span></h1>
         <div class="swiper featured-slider">
             <div class="swiper-wrapper">
@@ -260,7 +252,7 @@
 
     </section>
 
-    <section class="reviews" id="reviews">
+    <section class="reviews" id="reviews" style="padding: 20px 0px">
         <h1 class="heading"><span> آخرین دیدگاه ها</span></h1>
 
         <div class="swiper reviews-slider">
@@ -272,10 +264,10 @@
     </section>
     <!-- footer section starts  -->
 
-    <section class="footer">
+    <section class="footer text-center" style="padding: 0%">
         <hr>
         <div class="box-container">
-            <div class="box">
+            <div class="box text-right mr-5">
                 <h3> لینک ها سریع</h3>
                 <a href="/"> <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                         class="bi bi-house-door" viewBox="0 0 16 16">
@@ -289,7 +281,7 @@
                     </svg> فروشگاه </a>
             </div>
 
-            <div class="box">
+            <div class="box text-right mr-5">
                 <h3>حساب کاربری</h3>
                 <a href="/login"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                         class="bi bi-person" viewBox="0 0 16 16">
@@ -307,7 +299,7 @@
                     <i class="fas fa-arrow-right"></i> اقلام سفارش داده شده
                 </a>
             </div>
-            <div class="box">
+            <div class="box text-right mr-5">
                 <h3> تماس با ما</h3>
                 <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                         class="bi bi-geo-alt" viewBox="0 0 16 16">
@@ -337,7 +329,7 @@
 
         </div>
         <hr>
-        <div class="share">
+        <div class="share" style="padding: 0%">
             <a href="#" class="fab fa-facebook-f"></a>
             <a href="#" class="fab fa-twitter"></a>
             <a href="#" class="fab fa-instagram"></a>
@@ -352,9 +344,9 @@
 
     <!-- loader  -->
 
-    {{-- <div class="loader-container">
-        <img src="'index/image/loader-img.gif') ?>" alt="">
-    </div> --}}
+    <div class="loader-container">
+        <img src="<?= Url('index/image/loader-img.gif') ?>" alt="">
+    </div>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
     </script>
@@ -365,9 +357,10 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
     </script>
     <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
-
-    <!-- custom js file link  -->
     <script src="<?= Url('index/js/script.js') ?>"></script>
+
+    @yield('footer')
+    <!-- custom js file link  -->
 </body>
 
 </html>

@@ -36,16 +36,11 @@ $v = Verta::now(); //1396-02-02 15:32:08
         <li class="nav-item">
             <a class="nav-link h2 ml-5 text-white" href="about">درباره ما</a>
         </li>
-       
+
     </ul>
 @endsection
 
-@section('cart')
-    <?php
-    $count = sizeof([Session::get('cart')]); ?>
-    <a href="/cart" class="cart-btn nav-icon "><i class="fas fa-cart-plus">
-            <div class="cart-items">{{ $count }}</div>
-        </i></a>
+@section('addCart')
     @include('index.cart')
 @endsection
 
@@ -72,8 +67,9 @@ $v = Verta::now(); //1396-02-02 15:32:08
                                 </div>
                                 <div class="col-8 px-2">
                                     <div class="single-product-add-to-cart ">
-                                        <button type="submit" style="background-color: green ;">افزودن به سبد خرید <i
-                                                class="fas fa-cart-plus"></i></button>
+                                        <div style="background-color: green ;">افزودن به سبد خرید <i
+                                                class="fas fa-cart-plus" onclick="add_cart('{{ $record->id }}')"></i>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -399,7 +395,8 @@ $v = Verta::now(); //1396-02-02 15:32:08
                     <div class="content">
                         <h4 style=" ">{{ $bookstar->name_book }}</h4>
                         <div class="price">هزارتومن{{ $bookstar->price_book }} <span> </span></div>
-                        <div onclick="add_cart('{{ $bookstar->id }}')" class="btn border-success size-lg text-center " > افزودن به سبد
+                        <div onclick="add_cart('{{ $bookstar->id }}')" class="btn border-success size-lg text-center ">
+                            افزودن به سبد
                             خرید</div>
                     </div>
                 </div>
@@ -410,7 +407,7 @@ $v = Verta::now(); //1396-02-02 15:32:08
     </div>
 @endsection
 @section('footer')
-    <?php $url10 = Url('/cart'); ?>
+    <?php $url = Url('/add'); ?>
     <script type="text/javascript">
         add_cart = function(id) {
             $.ajaxSetup({
@@ -418,19 +415,60 @@ $v = Verta::now(); //1396-02-02 15:32:08
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
+
             $.ajax({
-                url: '<?= $url10 ?>',
+                url: '<?= $url ?>',
                 type: "POST",
                 data: 'id_book=' + id,
                 success: function(data) {
-                    alert(data);
+                    $('#addCart').html(data);
                 }
             });
         }
     </script>
+    <?php $url10 = Url('/remove'); ?>
+    <script type="text/javascript">
+        delete_cart = function(id) {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            $.ajax({
+                url: '<?= $url10 ?>',
+                type: "POST",
+                data: 'id_book=' + id,
+
+                success: function(data) {
+                    $('#addCart').html(data);
+                }
+            });
+        }
+    </script>
+    <?php $url11 = Url('/empty'); ?>
+    <script type="text/javascript">
+        empty_cart = function() {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            $.ajax({
+                url: '<?= $url11 ?>',
+                type: "POST",
+                success: function(data) {
+                    $('#addCart').html(data);
+                }
+            });
+        }
+    </script>
+    <script type="text/javascript" src="<?= Url('index/js/jQuery.js') ?>"></script>
+
+    <script src="<?= Url('index/js/scripts.js') ?>"></script>
     <script src="<?= Url('index/js/app.js') ?>"></script>
     <script src="<?= Url('index/js/index.js') ?>"></script>
-    <script src="<?= Url('index/js/scripts.js') ?>"></script>
 
     <script src="<?= Url('index/js/script_shop.js') ?>"></script>
 @endsection

@@ -47,41 +47,33 @@ class HomeController extends Controller
                         'comment'=>$comment
                     ]);
     }
-
     public function category($category){
         var_dump($category);
     }
-
-    
+    public function shop()
+    {
+        $category = SubjectsModel::where('replay_subjects','-')->orderby('id','desc')->get();
+        $order_date= BooksModel::orderby('id','desc');
+        $books = BooksModel::orderby('id','desc')->paginate(6);
+        return View('index.shop',['category'=>$category ,'order_date'=> $order_date ,'books'=>$books]);
+    }
     public function single( $url )
     { 
-
         $category = SubjectsModel::where('replay_subjects','-')->orderby('id','desc')->get();
         $record = BooksModel::where('url_book',$url)->orderby('id','desc')->first();
-
         $moalefs = MoalefBooksModel::where('id_books',$record->id)->get();
-
         $motarjems = BookMotarjemModel::where('id_book',$record->id)->get();
-
         $pakhshs = PakhshBooksModel::where('id_book',$record->id)->get();
-
         $countprint = CountPrintsModel::where('id_books',$record->id)->orderby('id','desc')->first();
-
         $comments = CommentsModel::where(['id_books'=>$record->id,'replaye_comments'=>'-','state'=>1])->get();
         $recomments = CommentsModel::where(['replaye_comments' =>$record->id, 'state' => 1])->get();
-
-
         $record->view_book += 1;
-
         if ( $record->update() ) {
-            
             return View('index.single',['category'=>$category,'record'=>$record,'moalefs'=>$moalefs,'motarjems'=>$motarjems,
             'pakhshs'=>$pakhshs,'countprint'=>$countprint,'comments'=>$comments,'recomments'=>$recomments]);
          } 
     }
-
-
-    public function addCart(Request $request)
+    public function add(Request $request)
     {
         if(Session::has('cart')){
             $cart = Session::get('cart') ;
@@ -92,27 +84,45 @@ class HomeController extends Controller
                 $cart[$request->id_book]=1;
             }
             Session::put('cart',$cart);
-            
         }
         else{
             $cart = array();
             $cart[$request->id_book]=1;
             Session::put('cart',$cart);
         }
-        $value =Session::get('cart');
-        var_dump($value);
-
-
-        
+        return View('index.cart');
     }
+    public function delete(Request $request){
+        $cart = Session::get('cart');
+        Session::forget('cart');
+        $cart2 = array();
+        foreach($cart as $key=>$value){
+            if($key != $request->id_book)
+                {
+                    $cart2[$key] = $value;
+                }
+                else
+                {
+                    $count = $cart[$request->id_book]-1;
+                    if($count == 0)
+                    {
 
-    public function shop()
-    {
-        $category = SubjectsModel::where('replay_subjects','-')->orderby('id','desc')->get();
-        $order_date= BooksModel::orderby('id','desc');
-        $books = BooksModel::orderby('id','desc')->paginate(6);
-        return View('index.shop',['category'=>$category,'books'=>$books ,'order_date'=> $order_date]);
+                    }
+                    else
+                    {
+                        $cart2[$request->id_book] =$count;
+                    }
+                }
+        }
+
+        Session::put('cart',$cart2);
+        return view('index.cart');
     }
+    public function empty_cart(){
+        Session::forget('cart');
+        return view('index.cart');
+    }
+    
 
     public function about()
     {

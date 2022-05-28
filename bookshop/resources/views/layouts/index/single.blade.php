@@ -8,7 +8,7 @@
     <title>فروشگاه کتاب </title>
 
     <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
     <!-- font awesome cdn link  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -45,11 +45,11 @@
 
             <div class="icons">
                 <div id="search-btn" class="fas fa-search"></div>
-                {{-- <a href="#"><i class="fas fa-heart"></i></a> --}}
+                <div id="login-btn" class="fas fa-user"><a href="{{ route('login') }}"></a></div>
+                <div class="headerLeft" id="addCart">
 
-                @yield('cart')
-                <div id="login-btn" class="fas fa-user"></div>
-
+                    @yield('addCart')
+                </div>
             </div>
         </div>
 
@@ -80,21 +80,49 @@
     <div class="login-form-container">
         <div id="close-login-btn" class="fas fa-times"></div>
 
-        <form action="">
+        <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
             <h3>ورود</h3>
+            {{ csrf_field() }}
+
             <span class="text-right">نام کاربری</span>
-            <input type="email" name="" class="box" placeholder="ایمیل خود را وارد کنید" id="" />
-            <span class="text-right">رمز عبور</span>
-            <input type="password" name="" class="box" placeholder="رمز عبور خود را وارد کنید" id="" />
-            <div class="checkbox">
-                <input type="checkbox" name="" id="remember-me" />
-                <label for="remember-me"> به خاطر سپردن</label>
+            <div>
+                <input id="email" type="email" class="form-control box mt-4 " name="email" value="{{ old('email') }}"
+                    placeholder="ایمیل خود را وارد کنید" />
+                @if ($errors->has('email'))
+                    <span class="help-block">
+                        <strong>{{ $errors->first('email') }}</strong>
+                    </span>
+                @endif
             </div>
-            <button type="submit" href="<?= Url('/login') ?>" class="btn">ورود</button>
-            <p class="text-center"><a href="#"> رمز خود را فراموش کرده اید ؟ </a></p>
+            <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                <span for="password" class="col-md-4 control-label text-right h4 ">رمز عبور</span>
+
+                <div>
+                    <input id="password" type="password" class="form-control box mt-4 " name="password"
+                        placeholder="رمز عبور خود را وارد کنید">
+
+                    @if ($errors->has('password'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('password') }}</strong>
+                        </span>
+                    @endif
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-6 col-md-offset-4">
+                    <div class="checkbox">
+                        <label type="checkbox" for="remember-me">
+                            <input type="checkbox" name="remember" id="remember-me"> مرا به خاطر
+                            بسپار
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <a type="submit" href="<?= Url('/') ?>" class="btn">ورود</a>
+            <p class="text-center"><a href="{{ url('/password/reset') }}"> رمز خود را فراموش کرده اید ؟ </a></p>
             <p class="text-right text-dark">عضو جدید:
             </p>
-            <button href="<?= Url('/register') ?>" class="btn btn-success">ساخت حساب</button>
+            <a href="{{ url('/register') }}" class="btn btn-success">ساخت حساب</a>
         </form>
     </div>
     <div class="single-product-content my-4">
@@ -102,10 +130,10 @@
             @yield('single')
         </div>
     </div>
-   
+
     <section class="featured" id="featured">
         <h1 class="heading"><span>کتابهای مرتبط</span></h1>
-                @yield('contentbook')
+        @yield('contentbook')
     </section>
     <section class="footer">
         <hr>
@@ -186,9 +214,9 @@
 
     <!-- loader  -->
 
-    {{-- <div class="loader-container">
-        <img src="'index/image/loader-img.gif') ?>" alt="">
-    </div> --}}
+    <div class="loader-container">
+        <img src="<?= Url('index/image/loader-img.gif') ?>" alt="">
+    </div>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
     </script>
@@ -199,15 +227,17 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
     </script>
     <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
-    <script src="<?= Url('index/js/jQuery.js') ?>"></script>
     <script src="<?= Url('index/js/bootstrap.bundle.min.js') ?>"></script>
     <script src="<?= Url('index/js/owl.carousel.min.js') ?>"></script>
     <script src="<?= Url('index/js/jquery.simple.timer.js') ?>"></script>
     <script src="<?= Url('index/js/jquery.elevatezoom.js') ?>"></script>
     <script src="<?= Url('index/js/jquery.fancybox.min.js') ?>"></script>
     <script src="<?= Url('index/js/index.js') ?>"></script>
+
     <!-- custom js file link  -->
     <script type="text/javascript" src="<?= Url('index/js/script.js') ?>"></script>
+    @yield('footer')
+
 </body>
 
 </html>

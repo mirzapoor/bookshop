@@ -13,12 +13,12 @@
 Route::get('/','HomeController@index');
 Route::get('/category/{category}','HomeController@category');
 Route::get('/book/{url}','HomeController@single');
-Route::post('/cart','HomeController@addCart');
+Route::post('/add','HomeController@add');
+Route::post('/remove','HomeController@delete');
+Route::post('/empty','HomeController@empty_cart');
 Route::get('/shop','HomeController@shop');
 Route::post('/comment','HomeController@comment');
 Route::get('/about', 'HomeController@about');
-
-
 
 Route::prefix('admin')->group(function () {
     Route::resource('/ticket','TicketController');
@@ -48,4 +48,4 @@ Route::prefix('admin')->group(function () {
 
 Auth::routes();
 
-// Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home');

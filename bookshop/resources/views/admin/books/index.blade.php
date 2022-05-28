@@ -35,7 +35,7 @@
                                             <tr class="gradeC">
                                                 <td>{{ $book->name_book }}</td>
                                                 <td>{{ $book->count_book }}</td>
-                                                <td>{{ $book->price_book }} </td>
+                                                <td>{!! number_format($book->price_book) !!} </td>
                                                 <td>{!! getusername($book->id_users) !!}</td>
                                                 <td> <img src="<?= Url('assets/img/imagebook/' . $book->img_book) ?>"
                                                         alt="{{ $book->name_book }}" width="60" height="60"
