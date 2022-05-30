@@ -145,4 +145,22 @@ class HomeController extends Controller
             return redirect( '/book/'.$url );
         }
     }
+
+    public function search( Request $request )
+    {
+        $category = SubjectsModel::where('replay_subjects','-')->orderby('id','desc')->get();
+        $books = BooksModel::where('name_book','LIKE','%'.$request->search.'%')->orderby('id','desc')->paginate(12);
+        return View('index.shop',['category'=>$category,'books'=>$books]);
+    }
+    // public function search(Request $request)
+    // {
+    // 	if($request->has('search')){
+    // 		$users = User::search($request->get('search'))->get();	
+    // 	}else{
+    // 		$users = User::get();
+    // 	}
+    //     return view('index', compact('users'));
+    // }
+
 }
+

@@ -42,9 +42,9 @@
         <h1 class="heading"><span>فروشگاه</span></h1>
         <div class="col-md-12">
             <div class="shop-content mt-4">
-                <div class="product-sort mb-4 d-flex w-100 align-items-center">
+                {{-- <div class="product-sort mb-4 d-flex w-100 align-items-center">
                     <div class="pe-3 border-end border-2 me-3">
-                        <form action="">
+                        {{-- <form action="">
                             <select name="" id="">
                                 <option value="">مرتب سازی</option>
 
@@ -60,7 +60,7 @@
                         <span class="d-inline-block p-2"><i class="bi bi-grid-3x3-gap-fill"></i></span>
                         <span class="d-inline-block p-2"><i class="bi bi-grid-fill"></i></span>
                     </div>
-                </div>
+                </div> --}}
                 <div class="row">
                     @foreach ($books as $book)
                         <div class="col-md-4 col-sm-6">
@@ -83,7 +83,7 @@
                                     </figcaption>
                                 </figure>
                                 <div class="meta p-3">
-                                    <h3 class="fs-12">{{ $book->name_book }}</h3>
+                                    <h3 class="fs-12 text-center">{{ $book->name_book }}</h3>
 
                                     <div class="d-flex align-items-center">
                                         <div class="col">
@@ -91,7 +91,7 @@
                                         </div>
                                         <div class="col text-end">
                                             <div class="col text-end">
-                                                <div class="stars fs-10 text-warning">
+                                                <div class="stars fs-12 text-warning">
                                                     <i class="fas fa-star"></i>
                                                     <i class="fas fa-star"></i>
                                                     <i class="fas fa-star"></i>

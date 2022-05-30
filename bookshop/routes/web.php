@@ -18,6 +18,8 @@ Route::post('/remove','HomeController@delete');
 Route::post('/empty','HomeController@empty_cart');
 Route::get('/shop','HomeController@shop');
 Route::post('/comment','HomeController@comment');
+Route::post('/search','HomeController@search'); 
+
 Route::get('/about', 'HomeController@about');
 
 Route::prefix('admin')->group(function () {

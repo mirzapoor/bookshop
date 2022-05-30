@@ -24,9 +24,13 @@
     <header class="header">
         <div class="header-1">
             <a href="#" class="logo"> <i class="fas fa-book"></i> کتابخانه </a>
-            <form action="" class="search-form">
-                <input type="search" name="" placeholder="جستجو کنید" id="search-box" />
-                <label for="search-box" class="fas fa-search"></label>
+           
+            <form action="<?= Url('/search') ?>" class="search-form" method="post">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                {{-- <input type="text" class="span1" name="search" id="navSearchInput"> --}}
+                <input type="search" name="search"placeholder="جستجو کنید" id="search-box" />
+                <button for="search-box" class="fas fa-search" style="background-color: white ; coloer:black"></button>
+               
             </form>
             <div class="icons">
                 <div id="search-btn" class="fas fa-search"></div>

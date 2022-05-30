@@ -3,10 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Scout\Searchable;
 
 class WritersModel extends Model
 {
-    //
+    use Searchable;
+
     protected $table='tbl_writers';
     public $timestamps=false;
     protected $fillable = [

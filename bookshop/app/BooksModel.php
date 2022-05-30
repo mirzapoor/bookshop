@@ -3,9 +3,13 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Scout\Searchable;
+
 
 class BooksModel extends Model
 {
+    use Searchable;
+
     protected $table='tbl_books';
     public $timestamps=false;
     protected $fillable = [
@@ -15,3 +19,5 @@ class BooksModel extends Model
     ];
     //
 }
+
+
