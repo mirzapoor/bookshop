@@ -162,6 +162,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         Hekmatinasser\Verta\Laravel\VertaServiceProvider::class,
+        Larabookir\Gateway\GatewayServiceProvider::class, // <-- add this line at the end of provider array
 
 
         
@@ -248,6 +249,8 @@ return [
         'Form' => Collective\Html\FormFacade::class, 
         'Html' => Collective\Html\HtmlFacade::class,
         'Verta' => Hekmatinasser\Verta\Verta::class,
+        'Gateway' => Larabookir\Gateway\Gateway::class, // <-- add this line at the end of aliases array
+
 
 
 

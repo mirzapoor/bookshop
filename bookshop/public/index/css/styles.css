@@ -3,13 +3,9 @@
     margin: 0;
 }
 
-@font-face{
-    src: url('fonts/Vazir-Light-FD.woff') format('woff');
-    font-family: 'seomind';
-}
+
 
 body,html{
-    font-family: 'seomind';
     font-size: 13px;
     overflow-x: hidden;
 }

@@ -61,7 +61,7 @@
                                         <div>
                                             <h2>قیمت کل</h2>
                                             <p> {!! number_format($prices)  !!} تومان</p>
-                                            <button class="btn">تسویه حساب</button>
+                                            <a class="btn" href="<?= Url('/checkout');?>">تسویه حساب</a>
                                             <div onclick="empty_cart()" class="btn">تخلیه سبد خرید </div>
 
                                         </div>

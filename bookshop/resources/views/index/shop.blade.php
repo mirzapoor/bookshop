@@ -105,14 +105,14 @@
                                 </div>
                                 <div class="add-to-cart position-relative w-100 pb-0 start-0 bottom-0 bg-white">
                                     <a href="<?= Url('book/' . $book->url_book) ?>"
-                                        class="d-block w-100 py-2  text-center  fs-10 btn">مشاهده جزئیات </a>
+                                        class="d-block w-100 py-2  text-center  fs-10 btn site-btn">مشاهده جزئیات </a>
                                     @if ($book->state_book == '1' || $book->state_book == '2')
                                         <div 
                                             class="d-block w-100 py-2  text-center  fs-10 btn  disabled">ناموجود
                                         </div>
                                     @else
                                         <div onclick="add_cart('{{ $book->id }}')" class="d-block w-100 py-2  text-center  fs-10 btn 
-                                            bi bi-basket">افزودن به سبد خرید</div>
+                                            bi bi-basket site-btn">افزودن به سبد خرید</div>
                                     @endif
                                 </div>
                             </div>

@@ -19,8 +19,19 @@ Route::post('/empty','HomeController@empty_cart');
 Route::get('/shop','HomeController@shop');
 Route::post('/comment','HomeController@comment');
 Route::post('/search','HomeController@search'); 
-
 Route::get('/about', 'HomeController@about');
+
+
+Route::get('/buy','HomeController@buy');
+Route::post('/buyback','HomeController@buypost');
+
+Route::get('/checkout','HomeController@checkout'); 
+Route::get('/checkout-step2','HomeController@checkoutstep2');
+Route::post('/checkout','HomeController@savecheckout');
+Route::get('/checkout-step3','HomeController@checkoutstep3');
+Route::get('/success/sefaresh/{id}','HomeController@success');
+ 
+
 
 Route::prefix('admin')->group(function () {
     Route::resource('/ticket','TicketController');
@@ -32,6 +43,8 @@ Route::prefix('admin')->group(function () {
     Route::resource('/chaphkoneh','ChaphkonehController');
     Route::resource('/category', 'CategoryController');
     Route::resource('/users', 'UserController');
+    Route::resource('/sefareshs','SefareshsController');
+	Route::get('/state/sefaresh/{idsefaresh}/{idstate}','SefareshsController@editstate');
     Route::resource('/books', 'BookController');
     Route::resource('/comments','CommentController');
 	Route::get('/comments/success/{id}','CommentController@success');

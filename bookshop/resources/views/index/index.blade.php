@@ -70,7 +70,7 @@
             <div class="content">
                 <h4>{{ $bookstar->name_book }}</h4>
                 <div class="price">هزارتومن{{ $bookstar->price_book }} <span> </span></div>
-                <div onclick="add_cart('{{ $bookstar->id }}')" class="btn"> افزودن به سبد خرید</div>
+                <div onclick="add_cart('{{ $bookstar->id }}')" class="btn site-btn"> افزودن به سبد خرید</div>
             </div>
         </div>
     @endforeach
@@ -162,7 +162,7 @@
                 @if ($favorit->state_book == '1' || $favorit->state_book == '2')
                     <a href="#" class="btn btn-hover disabled" style="background-color: red">ناموجود</a>
                 @else
-                    <div onclick="add_cart('{{ $favorit->id }}')" class="btn">اضافه کردن به سبد خرید</div>
+                    <div onclick="add_cart('{{ $favorit->id }}')" class="btn site-btn">اضافه کردن به سبد خرید</div>
                 @endif
             </div>
         </div>

@@ -27,9 +27,8 @@
            
             <form action="<?= Url('/search') ?>" class="search-form" method="post">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                {{-- <input type="text" class="span1" name="search" id="navSearchInput"> --}}
                 <input type="search" name="search"placeholder="جستجو کنید" id="search-box" />
-                <button for="search-box" class="fas fa-search" style="background-color: white ; coloer:black"></button>
+                <label onclick="<?= Url('/search');?>" for="search-box" class="fas fa-search"></label>
                
             </form>
             <div class="icons">
