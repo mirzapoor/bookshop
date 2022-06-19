@@ -42,7 +42,7 @@
                                                         title="{{ $book->name_book }}">
                                                 </td>
                                                 @if ($book->state_book == '0')
-                                                    <td style="color: black;background:rgb(10, 138, 34);">در انبار موجود هست . </td>
+                                                    <td style="color: black;background:rgb(217, 89, 8);">در انبار موجود هست . </td>
                                                 @elseif($book->state_book == '1')
                                                     <td style="color: black;background:rgb(136, 20, 20)">در انبار موجود نیست
                                                         . </td>
@@ -77,7 +77,7 @@
                                                     <div class="modal-header">
                                                         <button type="button" class="close" data-dismiss="modal"
                                                             aria-hidden="true">&times;</button>
-                                                        <h4 class="modal-title" id="H2"> آیا از حذف کردن کاربر
+                                                        <h4 class="modal-title" id="H2">آیا از حذف کردن کتاب 
                                                             {{ $book->name_book }}اطمینان دارید؟ </h4>
                                                     </div>
                                                     <div class="modal-baby">

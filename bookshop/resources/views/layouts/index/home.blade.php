@@ -38,7 +38,7 @@
                        
                     </form>
 
-                    <div class="icons">
+                    <div class="icons d-flex align-items-center">
                         <div id="search-btn" class="fas fa-search"></div>
                         <div id="login-btn" class="fas fa-user"><a href="{{ route('login') }}"></a></div>
                         <div class="headerLeft" id="addCart">
@@ -47,7 +47,7 @@
                         </div>
                     </div>
                 </div>
-                <nav class="header-2 navbar navbar-expand-md h1">
+                <nav class="header-2 navbar navbar-expand-md h1 mt-3">
                     <div id="my-nav" class="collapse navbar-collapse justify-content-center">
                         @yield('menunavbar')
                     </div>

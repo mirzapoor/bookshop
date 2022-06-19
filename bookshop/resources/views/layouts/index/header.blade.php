@@ -33,7 +33,7 @@
                 <button for="search-box" class="fas fa-search" style="background-color: white ; coloer:black"></button>
                
             </form>
-            <div class="icons">
+            <div class="icons d-flex align-items-center">
                 <div id="search-btn" class="fas fa-search"></div>
                 <div id="login-btn" class="fas fa-user"><a href="{{ route('login') }}"></a></div>
                 <div class="headerLeft" id="addCart">

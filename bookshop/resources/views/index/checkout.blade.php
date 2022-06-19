@@ -66,12 +66,8 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                              
+
                                                 @if (!empty(Session::get('cart')))
-                                                   
-                                               
-                                                   
-                    
                                                     <?php $price = 0; ?>
                                                     @foreach (Session::get('cart') as $key => $value)
                                                         <?php
@@ -100,9 +96,9 @@
                                                                 </div>
                                                             </td>
                                                         </tr>
-                                                        @endforeach
-                                                        @else
-                                                        @endif
+                                                    @endforeach
+                                                @else
+                                                @endif
                                                 <tr class="align-middle text-center">
                                                     <div class="position-relative">
                                                 <tr class="align-middle h-40p border-bottom h3 text-center ">
@@ -114,7 +110,7 @@
                                                 </tr>
                                                 <tr class="align-middle h-40p text-center">
                                                     <td colspan="3">اقلام شما</td>
-                                                    
+
                                                     <td colspan="3" class="fs-12 text-end">0</td>
                                                 </tr>
                                                 <tr class="align-middle h-40p text-center">
@@ -125,7 +121,7 @@
                                                 </tr>
                                 </div>
                                 </tr>
-                                
+
                                 </tbody>
                                 </table>
                                 </form>

@@ -1,4 +1,4 @@
-@extends('layouts.index.shop')
+@extends('layouts.index.header')
 @section('head')
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="<?= Url('index/css/main.css') ?>">
@@ -83,36 +83,35 @@
                                     </figcaption>
                                 </figure>
                                 <div class="meta p-3">
-                                    <h3 class="fs-12 text-center">{{ $book->name_book }}</h3>
-
+                                    <h3 class="fs-16 text-center">{{ $book->name_book }}</h3>
+                                    <br>
                                     <div class="d-flex align-items-center">
-                                        <div class="col">
+                                        <div class="col text-end">
                                             <span class="fs-12">{{ $book->price_book }} تومان</span>
                                         </div>
                                         <div class="col text-end">
-                                            <div class="col text-end">
-                                                <div class="stars fs-12 text-warning">
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star-half-alt"></i>
-                                                </div>
-
+                                            <div class="stars fs-12 text-warning">
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star-half-alt"></i>
                                             </div>
+
                                         </div>
                                     </div>
                                 </div>
-                                <div class="add-to-cart position-relative w-100 pb-0 start-0 bottom-0 bg-white">
+                                <div class="add-to-cart position-relative w-100 pb-0 start-0 bottom-0 bg-white ">
                                     <a href="<?= Url('book/' . $book->url_book) ?>"
                                         class="d-block w-100 py-2  text-center  fs-10 btn site-btn">مشاهده جزئیات </a>
                                     @if ($book->state_book == '1' || $book->state_book == '2')
-                                        <div 
-                                            class="d-block w-100 py-2  text-center  fs-10 btn  disabled">ناموجود
+                                        <div class="d-block w-100 py-2  text-center  fs-10 btn  disabled">ناموجود
                                         </div>
                                     @else
-                                        <div onclick="add_cart('{{ $book->id }}')" class="d-block w-100 py-2  text-center  fs-10 btn 
-                                            bi bi-basket site-btn">افزودن به سبد خرید</div>
+                                        <div onclick="add_cart('{{ $book->id }}')"
+                                            class="d-block w-100 py-2  text-center  fs-10 btn 
+                                            bi bi-basket site-btn">
+                                            افزودن به سبد خرید</div>
                                     @endif
                                 </div>
                             </div>
@@ -194,8 +193,6 @@
 <script src="<?= Url('index/js/index.js') ?>"></script>
 <script src="<?= Url('index/js/script_shop.js') ?>"></script>
 <script type="text/javascript" src="<?= Url('index/js/jQuery.js') ?>"></script>
-
-
 @endsection
 
 

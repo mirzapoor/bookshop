@@ -66,7 +66,7 @@
                                                 @elseif($sefaresh->state == 3)
                                                     <td style="background-color: orange;"> در مرحله آماده سازی </td>
                                                 @elseif($sefaresh->state == 4)
-                                                    <td style="background-color: rgba(3, 92, 38, 0.4);"> ارسال شد </td>
+                                                    <td style="background-color: rgb(16, 186, 21);"> ارسال شد </td>
                                                 @else
                                                     <td style="background-color: #546E7A;"> نامعلوم </td>
                                                 @endif
@@ -74,7 +74,7 @@
                                             </tr>
                                             <tr>
                                                 <td>قیمت کل خریدار</td>
-                                                <td>{{ $sefaresh->price }}</td>
+                                                <td>{!! number_format($sefaresh->price) !!}</td>
                                             </tr>
                                             <tr>
                                                 <td>آدرس خریدار</td>
@@ -98,7 +98,7 @@
                                                         href="<?= Url('assets/img/imagebook/'. imgbook($book->id_books)) ?>"
                                                         title="<?= titlebook($book->id_books) ?>({{ $book->count }})"><img
                                                             src="<?= Url('assets/img/imagebook/'. imgbook($book->id_books)) ?>"
-                                                            alt="<?= titlebook($book->id_books) ?>" /></a>
+                                                            alt="<?= titlebook($book->id_books) ?>" width="100" height="150" /></a>
                                                 </p>
                                             </div>
                                         @endforeach

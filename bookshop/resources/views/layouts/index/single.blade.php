@@ -38,12 +38,14 @@
         <div class="header-1">
             <a href="#" class="logo"> <i class="fas fa-book"></i> کتابخانه </a>
 
-            <form action="" class="search-form">
-                <input style="margin-top: 6%" type="search" name="" placeholder="جستجو کنید" id="search-box" />
-                <label style="margin-top: 10%" for="search-box" class="fas fa-search"></label>
+            <form action="<?= Url('/search') ?>" class="search-form" method="post">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                <input type="search" name="search" placeholder="جستجو کنید" id="search-box" />
+                <button for="search-box" class="fas fa-search" style="background-color: white ; coloer:black"></button>
+
             </form>
 
-            <div class="icons">
+            <div class="icons d-flex align-items-center">
                 <div id="search-btn" class="fas fa-search"></div>
                 <div id="login-btn" class="fas fa-user"><a href="{{ route('login') }}"></a></div>
                 <div class="headerLeft" id="addCart">
@@ -125,12 +127,7 @@
             <a href="{{ url('/register') }}" class="btn btn-success">ساخت حساب</a>
         </form>
     </div>
-    <div class="single-product-content my-4">
-        <div class="container-xl">
-            @yield('single')
-        </div>
-    </div>
-
+    @yield('single')
     <section class="featured" id="featured">
         <h1 class="heading"><span>کتابهای مرتبط</span></h1>
         @yield('contentbook')

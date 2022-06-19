@@ -38,73 +38,30 @@
 @endsection
 
 @section('purchase')
+    <section class="featured" id="featured">
+        <h1 class="heading"><span>تائید نهایی </span></h1>
+        <table class="table table-items">
+            <tbody>
+                <tr>
+                    <td>کد سفارش</td>
+                    <td> {{ $sef->codesefsresh_sefareshats }} </td>
+                </tr>
+                <tr>
+                    <td>کد پیگیری سفارش</td>
+                    <td> {{ $sef->codepaygiry_sefareshats }} </td>
+                </tr>
+                <tr>
+                    <td>آدرس ارسالی</td>
+                    <td>{{ $sef->address_sefareshats }}</td>
+                </tr>
+            </tbody>
+        </table>
 
-<!--  ==========  -->
-<!--  = Header =  -->
-<!--  ==========  -->
-<header>
-    <div class="row">
-       
-        <div class="span6">
-            <div class="center-align">
-                <h1><span class="light">تایید</span> نهایی</h1>
-            </div>
-        </div>
-        <div class="span2">
-            <div class="right-align">
-                <img src="<?= Url('themes/1/images/buttons/security.jpg'); ?>" alt="امنیت خرید" width="92" height="65" />
-            </div>
-        </div>
-    </div>
-</header>
-
-<!--  ==========  -->
-<!--  = Steps =  -->
-<!--  ==========  -->
-<!--  ==========  -->
-
-<div class="checkout-steps">
-    <div class="clearfix">
-        <div class="step done">
-            <div class="step-badge"><i class="icon-ok"></i></div>
-            <a href="<?= Url('checkout'); ?>">سبد خريد</a>
-        </div>
-        <div class="step done">
-            <div class="step-badge"><i class="icon-ok"></i></div>
-            <a href="<?= Url('checkout-step2'); ?>">آدرس ارسال</a>
-        </div>
-
-        <div class="step active">
-            <div class="step-badge">4</div>
-            تایید نهایی
-        </div>
-    </div>
-</div> <!-- /steps -->
-
-<!--  ==========  -->
-<!--  = Selected Items =  -->
-<!--  ==========  -->
-<table class="table table-items">
-    <tbody>
-        <tr>
-            <td>کد سفارش</td>
-            <td> {{ $sef->codesefsresh_sefareshats }} </td>
-        </tr>
-        <tr>
-            <td>کد پیگیری سفارش</td>
-            <td> {{ $sef->codepaygiry_sefareshats }} </td>
-        </tr>
-        <tr>
-            <td>آدرس ارسالی</td>
-            <td>{{ $sef->address_sefareshats }}</td>
-        </tr>
-    </tbody>
-</table> 
-
-<p class="right-align">
-    <a href="<?= Url('/success/sefaresh/'.$sef->id); ?>" class="btn btn-primary higher bold">تاييد نهایی و پرداخت </a>
-</p>
-
+        <p class="right-align text-center">
+            <a href="<?= Url('/success/sefaresh/' . $sef->id) ?>" class="btn site-btn">تاييد نهایی و پرداخت
+            </a>
+        </p>
+    </section>
 @endsection
 @section('footer')
     <?php $url = Url('/add'); ?>

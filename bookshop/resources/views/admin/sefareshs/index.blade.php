@@ -37,19 +37,19 @@
                                                 <td>{{ $f->codesefsresh_sefareshats }}</td>
                                                 <td>{{ $f->name_sefareshats }}</td>
                                                 <td>{{ $f->lname_sefareshats }}</td>
-                                                <td>{{ $f->price }}</td>
+                                                <td>{!! number_format($f->price) !!}</td>
 
 
                                                 @if ($f->state == 0)
                                                     <td style="background-color: red;"> ثبت نهایی نشده </td>
                                                 @elseif($f->state == 1)
-                                                    <td style="background-color: green;"> سفارش جدید </td>
+                                                    <td style="background-color: rgb(15, 63, 196);"> سفارش جدید </td>
                                                 @elseif($f->state == 2)
                                                     <td style="background-color: yellow;"> در حال بررسی </td>
                                                 @elseif($f->state == 3)
                                                     <td style="background-color: orange;"> در مرحله آماده سازی </td>
                                                 @elseif($f->state == 4)
-                                                    <td style="background-color: #5986;"> ارسال شد </td>
+                                                    <td style="background-color: rgb(16, 186, 21);"> ارسال شد </td>
                                                 @else
                                                     <td style="background-color: #546E7A;"> نامعلوم </td>
                                                 @endif

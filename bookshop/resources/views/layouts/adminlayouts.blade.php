@@ -165,7 +165,7 @@ use App\Http\Controller\Auth\AuthController;
         <div id="right">
             <div class="media user-media well-small">
                 <a class="user-link" href="#">
-                    <img class="media-object img-thumbnail user-img" alt="User Picture" src="<?= Url('assets/imageusers/'.Auth::user()->img); ?>" />
+                    <img width="60" height="60" class="media-object img-thumbnail user-img" alt="User Picture" src="<?= Url('assets/imageuser/anonymous-user.png') ?>" />
                 </a>
                 <br />
                 <div class="media-body">
@@ -304,7 +304,7 @@ use App\Http\Controller\Auth\AuthController;
                     <span class="pull-left">
                         <i class="icon-angle-right"></i>
                     </span>
-                    &nbsp; <span class="label label-warning">5</span>&nbsp;
+                   
                 </a>
                 <ul class="collapse" id="error-nav">
                     <li><a href="<?= Url('admin/users/create') ?>"><i class="icon-angle-left"></i>ثبت کاربر جدید</a>
@@ -314,31 +314,29 @@ use App\Http\Controller\Auth\AuthController;
                 </ul>
             </li>
             <li><a href="<?= Url('admin/comments') ?>"><i class="icon-table"></i> دیدگاه ها
-                    &nbsp;
-                    @if (countcomment() == 0)
-                    @else
-                        <span class="label label-danger">{{ countcomment() }}</span>&nbsp;
-                    @endif
+                <span class="pull-left">
+                    <i class="icon-angle-right"></i>
+                </span>
+                &nbsp;<span class="label label-danger">{{ countcomment() }}</span>&nbsp;
+                   
                 </a></li>
             <li><a href="<?= Url('admin/ticket') ?>"><i class="icon-table"></i> تیکت ها
-                    &nbsp;
-                    @if (countmessage() == 0)
-                    @else
-                        <span class="label label-success">{!! countmessage() !!}</span>&nbsp;
-                    @endif
+                <span class="pull-left">
+                    <i class="icon-angle-right"></i>
+                </span>
+                    &nbsp; <span class="label label-success">{!! countmessage() !!}</span>&nbsp;
                 </a></li>
             <li class="panel">
-                <a href="#" data-parent="#menu" data-toggle="collapse" class="accordion-toggle"
+                <a href="<?= Url('/admin/sefareshs');?>" data-parent="#menu" data-toggle="collapse" class="accordion-toggle"
                     data-target="#blank-nav">
                     <i class="icon-check-empty"></i> مدیریت سفارشات
                     <span class="pull-left">
                         <i class="icon-angle-right"></i>
                     </span>
-                    &nbsp; <span class="label label-success">2</span>&nbsp;
+                    &nbsp; <span class="label label-success">{{ countsefaresh() }}</span>&nbsp;
                 </a>
                 <ul class="collapse" id="blank-nav">
-                    <li><a href="blank.html"><i class="icon-angle-left"></i> صفحه خالی اول </a></li>
-                    <li><a href="blank2.html"><i class="icon-angle-left"></i> صفحه خالی دوم </a></li>
+                    <li><a href="<?= Url('/admin/sefareshs');?>"><i class="icon-angle-left"></i> سفارشات کاربران</a></li>
                 </ul>
             </li>
             <li><a href="/login"><i class="icon-signin"></i> صفحه ورود </a></li>
@@ -357,7 +355,7 @@ use App\Http\Controller\Auth\AuthController;
                 <a class="btn btn-primary btn-block" href="<?= url('admin/books') ?>"> کتاب ها</a>
                 <a class="btn btn-info btn-block" href="<?= Url('admin/translator') ?>">مترجمین</a>
                 <a class="btn btn-success btn-block" href="<?= Url('admin/writer') ?>">نویسندگان</a>
-                <a class="btn btn-danger btn-block" href="#">سفارشات</a>
+                <a class="btn btn-danger btn-block" href="<?= Url('admin/sefareshs') ?>">سفارشات</a>
                 <a class="btn btn-warning btn-block" href="<?= Url('admin/comments') ?>"> دیدگاه ها </a>
                 <a class="btn btn-info btn-block" href="<?= Url('admin/users') ?>"> کاربران </a>
             </div>
@@ -396,7 +394,7 @@ use App\Http\Controller\Auth\AuthController;
 <?php
 
 use App\CommentsModel;
-// use App\SefareshModel;
+use App\SefareshatsModel;
 use App\CallMeModel;
 
 function countcomment()
@@ -413,10 +411,10 @@ function getComment()
     return $comment;
 }
 
-// function countsefaresh(){
-//     $count = SefareshModel::where('state',1)->count();
-//     return $count;
-// }
+function countsefaresh(){
+    $count = SefareshatsModel::where('state',1)->count();
+    return $count;
+}
 
 function countmessage()
 {

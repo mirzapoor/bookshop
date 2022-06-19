@@ -32,18 +32,11 @@
         <li class="nav-item">
             <a class="nav-link h2 ml-5 text-white" href="#">درباره ما</a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link h2 ml-5 text-white" href="#">تماس با ما</a>
-        </li>
+      
     </ul>
 @endsection
 
-@section('cart')
-    <?php
-    $count = sizeof([Session::get('cart')]); ?>
-    <a href="/cart" class="cart-btn nav-icon "><i class="fas fa-cart-plus">
-            <div class="cart-items">{{ $count }}</div>
-        </i></a>
+@section('addCart')
     @include('index.cart')
 @endsection
 

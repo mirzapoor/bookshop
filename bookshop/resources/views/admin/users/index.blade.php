@@ -37,7 +37,7 @@
                                                 <td>{{ $user->lname }} </td>
                                                 <td>{{ $user->name }}</td>
                                                 <td>{{ $user->email }}</td>
-                                                <td> <img src="<?= Url('assets/imageuser/' . $user->img) ?>"
+                                                <td> <img src="<?= Url('assets/imageuser/anonymous-user.png') ?>"
                                                         alt="{{ $user->lname }}" width="60" height="60"
                                                         title="{{ $user->lname }}">
                                                 </td>
