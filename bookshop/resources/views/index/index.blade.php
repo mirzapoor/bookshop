@@ -30,15 +30,12 @@
                         <a class="dropdown-item h4"
                             href="<?= Url('categorys/' . $undermenu->name_subjects) ?>">{{ $undermenu->name_subjects }}</a>
                     @endforeach
-
+                </div>
             </li>
         @endforeach
-
         <li class="nav-item">
             <a class="nav-link h2 ml-5 text-white" href="/about">درباره ما</a>
         </li>
-
-
     </ul>
 @endsection
 
@@ -65,7 +62,6 @@
                 <a href="<?= Url('book/' . $bookstar->url_book) ?>"> <img
                         src=" <?= Url('assets/img/imagebook/' . $bookstar->img_book) ?>" alt="{{ $bookstar->name_book }}"
                         title="{{ $bookstar->name_book }}" /></a>
-
             </div>
             <div class="content">
                 <h4>{{ $bookstar->name_book }}</h4>

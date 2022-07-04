@@ -1,4 +1,4 @@
-@extends('layouts.index.shop')
+@extends('layouts.index.header')
 @section('head')
     <meta name="csrf-token" content="{{ csrf_token() }}">
 

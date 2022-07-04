@@ -10,6 +10,8 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Auth::routes();
+
 Route::get('/','HomeController@index');
 Route::get('/category/{category}','HomeController@category');
 Route::get('/book/{url}','HomeController@single');
@@ -33,7 +35,7 @@ Route::get('/success/sefaresh/{id}','HomeController@success');
  
 
 
-Route::prefix('admin')->group(function () {
+Route::prefix('admin')->name('admin')->group(function () {
     Route::resource('/ticket','TicketController');
     Route::post('/ticket/ansewer','TicketController@ansewer');
 	Route::get('/ticket/ansewer/{id}','TicketController@ansewerget');
@@ -61,6 +63,5 @@ Route::prefix('admin')->group(function () {
 	Route::resource('/ticket','UserPanelTicketController');
 });
 
-Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

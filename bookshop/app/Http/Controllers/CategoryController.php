@@ -41,7 +41,9 @@ class CategoryController extends Controller
     public function create()
     {
         //
-        $category =['-'=>'نام دسته مادر را انتخاب کنید.']+ SubjectsModel::where('replay_subjects','-')->orderBy('id','desc')->pluck('name_subjects','id')->toArray();
+        $category =['-'=>'نام دسته مادر را انتخاب کنید.']+
+         SubjectsModel::where('replay_subjects','-')->
+        orderBy('id','desc')->pluck('name_subjects','id')->toArray();
         return view('admin.category.create',['category'=>$category]);
     }
 

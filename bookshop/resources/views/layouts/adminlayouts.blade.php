@@ -190,7 +190,9 @@ use App\Http\Controller\Auth\AuthController;
                     <a href="#" data-parent="#menu" data-toggle="collapse" class="accordion-toggle"
                         data-target="#component-nav">
                         <i class="icon-tasks"> </i> مدیریت کتاب های سایت
-
+                        <span class="pull-left">
+                            <i class="icon-angle-right"></i>
+                        </span>
                     </a>
                     <ul class="collapse" id="component-nav">
                         <li class=""><a href="<?= url('admin/books/create') ?>"><i
@@ -412,7 +414,7 @@ function getComment()
 }
 
 function countsefaresh(){
-    $count = SefareshatsModel::where('state',1)->count();
+    $count = SefareshatsModel::where('state',0)->count();
     return $count;
 }
 

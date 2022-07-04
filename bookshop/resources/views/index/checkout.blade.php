@@ -68,13 +68,16 @@
                                             <tbody>
 
                                                 @if (!empty(Session::get('cart')))
-                                                    <?php $price = 0; ?>
+                                                    <?php $price = 0; $i=0;  $b=0;?>
+                                                    <?php $count = sizeof(Session::get('cart')); ?>
+
                                                     @foreach (Session::get('cart') as $key => $value)
                                                         <?php
                                                         $book = BooksModel::find($key);
                                                         ?>
+                                                        <?php $i++;?>
                                                         <tr class="align-middle text-center">
-                                                            <td colspan="1">{{ $key }}</td>
+                                                            <td colspan="1"><?php echo $i; ?></td>
                                                             <td style="width: 50%">{{ $book->name_book }}</td>
                                                             <td><img src="<?= Url('assets/img/imagebook/' . $book->img_book) ?>"
                                                                     alt="{{ $book->name_book }}" class="mx-auto d-table"
@@ -111,7 +114,7 @@
                                                 <tr class="align-middle h-40p text-center">
                                                     <td colspan="3">اقلام شما</td>
 
-                                                    <td colspan="3" class="fs-12 text-end">0</td>
+                                                    <td colspan="3" class="fs-12 text-end">{{ $count }}</td>
                                                 </tr>
                                                 <tr class="align-middle h-40p text-center">
                                                     <td colspan="10"><a href="<?= Url('/checkout-step2') ?>"

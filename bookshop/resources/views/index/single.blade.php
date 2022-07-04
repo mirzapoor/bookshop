@@ -53,7 +53,7 @@ $v = Verta::now(); //1396-02-02 15:32:08
                 <div class="excerpt py-4">
 
                     <h1>{{ $record->name_book }}</h1>
-                    <span style="margin-bottom: 60% ;" class=" d-block text-right">{{ $record->price_book }} تومان</span>
+                    <span  class=" d-block text-right">{{ $record->price_book }} تومان</span>
                     <hr>
                     <p class="lh-lg fs-10">{{ $record->details_book }}
                     </p>
@@ -67,9 +67,10 @@ $v = Verta::now(); //1396-02-02 15:32:08
                                 </div>
                                 <div class="col-8 px-2">
                                     <div class="single-product-add-to-cart ">
-                                        <div style="background-color: green ;">افزودن به سبد خرید <i
-                                                class="fas fa-cart-plus" onclick="add_cart('{{ $record->id }}')"></i>
-                                        </div>
+                                        <button style="background-color: #27ae60 ;   width: 200px;
+                                        height: 40px; ">افزودن به سبد خرید <i
+                                                class=" fas fa-cart-plus text-center" onclick="add_cart('{{ $record->id }}')"></i>
+                                        </button>
                                     </div>
                                 </div>
                             </div>

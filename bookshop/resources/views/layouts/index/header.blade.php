@@ -111,7 +111,8 @@
     <!-- home section starts  -->
 
     @yield('purchase')
-
+    @yield('shop')
+    @yield('numberpage')
     
 
     <!-- footer section ends -->

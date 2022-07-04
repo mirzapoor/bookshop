@@ -59,7 +59,7 @@ class HomeController extends Controller
     {
         $category = SubjectsModel::where('replay_subjects','-')->orderby('id','desc')->get();
         $order_date= BooksModel::orderby('id','desc');
-        $books = BooksModel::orderby('id','desc')->paginate(6);
+        $books = BooksModel::orderby('id','desc')->paginate(12);
         return View('index.shop',['category'=>$category ,'order_date'=> $order_date ,'books'=>$books]);
     }
     public function single( $url )

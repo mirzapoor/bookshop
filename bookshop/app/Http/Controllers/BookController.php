@@ -47,7 +47,6 @@ class BookController extends Controller
      */
     public function create()
     {
-        //
         $chaps =['-'=>'چاپخانه را انتخاب کنید.'] + ChaphkonehsModel::
         orderby('id','desc')->pluck('name_chapkhonehs','id')->toArray();
         $subjects =['-'=>'موضوع را انتخاب کنید.'] + SubjectsModel::
@@ -56,7 +55,6 @@ class BookController extends Controller
         $motarjems= MotarjemsModel::orderby('id','desc')->get();
         $pakhsh= PakhshModel::orderby('id','desc')->get();
 
-       
         $available ="در انبار موجود هست .";
         $unavailable = "در انبار موجود نیست.";
         $SalesAreProhibited = "کاربران اجازه خریده ندارند" ;

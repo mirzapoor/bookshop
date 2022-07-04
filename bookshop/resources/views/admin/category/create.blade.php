@@ -34,7 +34,8 @@
                     <div class="form-group">
                         {{ Form::label('name_subjects', 'نام موضوع ', ['class' => 'control-label cal-lg-3']) }}
                         <div class="col-lg-7">
-                            {!! Form::text('name_subjects', null, ['class' => 'form-control', 'placeholder' => 'نام موضوع را وارد کنید.']) !!}
+                            {!! Form::text('name_subjects', null, ['class' => 'form-control',
+                             'placeholder' => 'نام موضوع را وارد کنید.']) !!}
                         </div>
                     </div>
                     <div class="form-group ">

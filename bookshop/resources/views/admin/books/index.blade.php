@@ -19,7 +19,7 @@
                             <div class="table-responsive">
                                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                     <thead>
-                                        <tr>
+                                        <tr dir="rtl">
                                             <th>نام کتاب</th>
                                             <th> تعداد موجودی </th>
                                             <th>قیمت کتاب</th>

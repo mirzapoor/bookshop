@@ -1,6 +1,7 @@
 @extends('layouts.adminlayouts')
 @section('head')
     <link rel="stylesheet" href="<?= Url('assets/css/bootstrap-fileupload.min.css') ?>">
+
 @endsection
 @section('content')
     <div id="content">
@@ -131,8 +132,7 @@
                                             <div class="col-lg-8">
                                                 <div class="fileupload fileupload-new" data-provides="fileupload">
                                                     <div class="fileupload-preview thumbnail"
-                                                        style="width: 350px ;
-                                                                                                             height:250px ;">
+                                                        style="width: 350px ; height:250px ;">
                                                     </div>
                                                     <div>
                                                         <span class="btn btn-file btn-success">
@@ -161,12 +161,12 @@
                                             title="افزودن نویسنده جدید">
                                     </a>
                                 </div>
-                                <div class="panel-body">
-                                    <div class="table-responsive">
-                                        <div class="row">
+                                <div class="panel-body ">
+                                    <div class="table-responsive ">
+                                        <div class="row ">
                                             @foreach ($writers as $moalef)
-                                                <div class="col-lg-4">
-                                                    <div class="well">
+                                                <div class="col-lg-4 ">
+                                                    <div class="well ">
                                                         <h4 style="color: red">{{ $moalef->name_writers }}
                                                             {{ $moalef->lname_writers }}
                                                             <input type="checkbox" name="writer[]"
